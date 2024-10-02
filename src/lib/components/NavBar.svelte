@@ -1,82 +1,58 @@
-<script>
-	import { modalOpened } from '$lib/store';
-	import Icon from '$lib/components/Icon.svelte';
+<script lang="ts">
+	import Burger from './Hamburger.svelte';
+	import Logo from '$lib/assets/logo.svg';
+	import routes from '$lib/NavRoutes';
+	import Icon from './Icon.svelte';
+	import pdf from '$lib/assets/Resume.pdf'
+	
+	let opened = false;
+	export let segment: string;
+
+	// Function to trigger the PDF download
+	function downloadResume() {
+		const pdfUrl = '/path-to-your-resume.pdf'; // Replace with the actual path to your PDF
+		const link = document.createElement('a');
+		link.href = pdfUrl;
+		link.download = 'YourResume.pdf'; // Change the filename if needed
+		link.click();
+	}
 </script>
 
-<svelte:head>
-	<title>Kai | Portfolio</title>
-</svelte:head>
-<main class="intro">
-	<div class="introduction">
-		<br>
-		<br>
-			<h2 class="hero glitch layers hidden" data-text="KaiYu"><span>于凯帆</span></h2>
-		<br>
-		<br>
-		<span class="hidden" id="text" style="color: #4158d0; font-size:2.1rem; font-weight: bold">Software Engineer /Machine Learning Engineer</span>
-		<br>
-		<br>
-		<span  class="hidden" id="text" style="font-size:2rem; ">Computer Science student at UC Irvine.</span>
-		<br>
-		<br>
-		<div style="display:flex; gap:20px">
-			<div
-			role="button"
-			tabindex="0"
-			on:keypress={() => {
-				modalOpened.set(true);
-			}}
-			on:click={() => {
-				modalOpened.set(true);
-			}}
-		>
-			<div class="icon cursor-pointer">
-				<Icon name="Email" width="2rem" height="2rem"/>
-			</div>
-		</div>
-			<a class="icon " href="https://github.com/kaifanyu" aria-label="GitHub" target="_blank"rel="noopener noreferrer">
-				<Icon name="Github" width="2rem" height="2rem"/>
+
+<div class={opened ? 'NavBar open' : 'NavBar'}>
+	<div class="innerContainer">
+		<div class="logo-container">
+			<a href="/">
+				<Icon name="Main_Logo"></Icon>
 			</a>
-			<a class="icon" href="https://www.linkedin.com/in/kai-yu-084a92196/" aria-label="GitHub" target="_blank"rel="noopener noreferrer">
-				<Icon name="LinkedIn" width="2rem" height="2rem"/>
-			</a>
+			<a href="/"><h2 class="hero glitch layers" data-text="于凯帆"><span>Kai Yu</span></h2></a> <!-- Make "Kai Yu" a clickable link -->
 		</div>
 
-
-
+		<div class="burger">
+			<Burger bind:open={opened} />
+		</div>
+		
+		<div class="buttons">
+			{#each routes as route}
+				<a class={`button ${segment === route.href ? 'selected' : ''}`} href={route.href}
+					>{route.label}</a
+				>
+			{/each}
+	
+		</div>
 	</div>
-</main>
+	<div class="responsiveButtons buttons">
+		{#each routes as route}
+			<a class={`button ${segment === route.href ? 'selected' : ''}`} href={route.href}
+				>{route.label}</a
+			>
+		{/each}
+	</div>
+	
+</div>
+
 
 <style>
-
-	#text{
-		white-space: nowrap; /* Prevent text from wrapping */
-	}
-
-	.hero {
-	font-size: clamp(40px, 10vw, 100px);
-	line-height: 1;
-	display: inline-block;
-	color: #fff;
-	z-index: 2;
-	letter-spacing: 10px;
-
-	/* Bright things in dark environments usually cast that light, giving off a glow */
-	filter: drop-shadow(0 1px 3px);
-	}
-
-
-	main {
-		text-align: center;
-		padding: 0;
-		margin: 0 20px;
-		text-align: left;
-		display: flex;
-		flex-direction: column;
-		height: calc(100vh - 80px - 88px);
-		justify-content: center;
-		align-items: center;
-	}
 
 	.intro{
 		display: grid;
@@ -94,12 +70,12 @@
 
 
 	.hero {
-	font-size: clamp(40px, 10vw, 100px);
+	font-size: clamp(10px, 3vw, 30px);
 	line-height: 1;
 	display: inline-block;
 	color: #fff;
 	z-index: 2;
-	letter-spacing: 10px;
+	letter-spacing: 2px;
 
 	/* Bright things in dark environments usually cast that light, giving off a glow */
 	filter: drop-shadow(0 1px 3px);
@@ -501,28 +477,179 @@
 		transition: color 0.2s ease-in-out;
 	}
 	.icon:hover {
-		color: #4158d0;;
+		color: #ca3c25;
+	}
+
+	.logo-container {
+		display: flex;
+		align-items: center;
+		font-size: 30px;
+	}
+
+	.logo-container a {
+		margin-right: 10px; /* Adjust the margin as needed */
+	}
+
+	.logo-container a:last-child {
+		margin-right: 0; /* Remove margin for the last child (Kai Yu) */
+	}
+
+	.logo-container a:hover {
+		content: '';
+		border-bottom: #1E3A8A;
 	}
 
 
-	@media (min-width: 600px) {
-		main {
-			max-width: none;
+
+	:global(.logo) {
+		cursor: pointer;
+		height: 30px;
+		width: 30px;
+	}
+
+	.open {
+		flex-direction: column !important;
+		align-items: center !important;
+		height: 330px !important;
+		transition: height 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+	}
+
+	.selected {
+		position: relative;
+		color: white;
+	}
+
+	.button:hover::after {
+		content: '';
+		background: #1E3A8A;
+		display: block;
+		height: 3px;
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.button.selected:after {
+		content: '';
+		background: #1E3A8A;
+		display: block;
+		height: 3px;
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.innerContainer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		max-width: 1178px;
+		box-sizing: border-box;
+	}
+
+	.innerContainer :global(a) {
+		height: 30px;
+		color: white;
+	}
+
+	.NavBar {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		max-width: 1100px;
+		box-sizing: border-box;
+		padding: 20px;
+		height: 80px;
+		overflow: hidden;
+		transition: height 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+	}
+
+	.buttons {
+		display: none;
+		justify-content: space-between;
+		align-items: center;
+		font-weight: 500;
+	}
+
+	.responsiveButtons {
+		margin-top: 20px;
+		width: 100%;
+		display: flex !important;
+		flex-direction: column;
+	}
+
+	.responsiveButtons .button {
+		max-width: 100px;
+		width: 100%;
+		text-align: center;
+	}
+
+	.buttons .button {
+		padding: 0;
+		cursor: pointer;
+		transition: color 0.2s ease-in-out;
+		text-decoration: none;
+		position: relative;
+		font-size: 20px;
+		margin: 10px;
+		color: hsla(0, 0%, 100%, 0.4);
+	}
+
+	.button.selected {
+		color: white;
+	}
+
+	.burger :global(button) {
+		margin: 0;
+	}
+
+	@media (min-width: 900px) {
+
+		.NavBar {
+			padding: 20px 0;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			max-width: 1900px;
+			margin: 0 auto;
+		}
+
+
+		.buttons {
+			display: flex;
+		}
+
+		.NavBar .burger {
+			display: none !important;
+		}
+		.responsiveButtons {
+			display: none !important;
 		}
 	}
 	
-
 	@media screen and (max-width: 900px) {
+		.hero {
+		font-size: clamp(30px, 8vw, 80px);
+		}
 
-	#text{
-		font-size: 1.3rem;
+		.NavBar{
+			display: block;
+			max-height: fit-content;
+		}
+
+		.buttons .button {
+		padding: 0;
+		cursor: pointer;
+		transition: color 0.2s ease-in-out;
+		text-decoration: none;
+		position: relative;
+		font-size: 20px;
+		margin: 10px;
+		color: hsla(0, 0%, 100%, 0.4);
 	}
 
-	.intro{
-		display: flex;
 	}
-	}
-
-
-
 </style>
