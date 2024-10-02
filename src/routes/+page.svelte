@@ -13,7 +13,7 @@
 			<h2 class="hero glitch layers hidden" data-text="KaiYu"><span>于凯帆</span></h2>
 		<br>
 		<br>
-		<span class="hidden" id="text" style="color: #4158d0; font-size:2.1rem; font-weight: bold">Software Engineer /Machine Learning Engineer</span>
+		<span class="hidden" id="text" style="color: #4158d0; font-size:2.1rem; font-weight: bold">Software Engineer / Machine Learning Engineer</span>
 		<br>
 		<br>
 		<span  class="hidden" id="text" style="font-size:2rem; ">Computer Science student at UC Irvine.</span>
