@@ -5,12 +5,10 @@
 	import embed from '$lib/assets/embed.png'
 	import discord from '$lib/assets/discord.jpg'
 	import vuln from '$lib/assets/vuln.jpg'
-	import keylogger from '$lib/assets/keylogger.jpg'
 	import cysafe from '$lib/assets/cysafe.png'
 	import webscraper from '$lib/assets/webscraper.png'
 	import Icon from '$lib/components/Icon.svelte';
   import journal from '$lib/assets/journal.jpg'
-  import Asl from './asl.svelte'
 </script>
 
 <svelte:head>
