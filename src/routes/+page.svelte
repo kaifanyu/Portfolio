@@ -2,24 +2,29 @@
 
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
+	import stable_diffusion from '$lib/images/stable.png';
+	import wav2vec from '$lib/images/wav2vec2.png';
+	import minecraft from '$lib/images/minecraft.png';
+	import cysafe from '$lib/images/cysafe.png';
+	import settlement from '$lib/images/settlement.png';
 
 	const research = [
 		{
 		date: '2024 — Present',
-		title: 'Topic Modeling and Statistical Analysis',
+		title: 'Topic Modeling and Analysis',
 		company: 'UC Irvine',
 		description:
 			"Implemented Latent Dirichlet Allocation to conduct topic modeling on collection of student admission essays",
-		technologies: ['Python', 'PostgreSQL'],
+		technologies: ['Python', 'BerTopic', 'Statistics'],
 		link: 'https://netpropriate.com/',
 		},	
 		{
 		date: '2024 — Present',
-		title: 'Machine Learning Prediction on PFAS Contamination',
+		title: 'ML Prediction on PFAS Contamination',
 		company: 'UC Irvine',
 		description:
-			"Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.",
-		technologies: ['Python', 'PostgreSQL'],
+			"Preprocessed Permanent Forever Chemicals data in all 50 US States for machine learning model. COnducted statiscal analysis including descriptive statisctics, trend identification, and time-series analsyis. Created visualizations like geospatial amps to help analyze data distribution and trends.",
+		technologies: ['Python', 'PyTorch', 'Scipy'],
 		link: 'https://netpropriate.com/',
 		},	
 	]
@@ -34,46 +39,99 @@
 		link: 'https://netpropriate.com/',
 		},
 		{
-		date: '2018 — 2024',
-		title: 'Security Intern',
-		company: 'County of Marin',
-		description:
-			"Build, style, and ship high-quality websites, design systems, mobile apps, and digital experiences for a diverse array of projects. Provide leadership within the engineering department through close collaboration, knowledge shares, and spearheading the development of internal tools.",
-		technologies: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'React Native'],
-		link: 'https://upstatement.com',
-		},
-		{
-		date: '2018 — 2024',
+		date: '2023 - 2024',
 		title: 'STEM Insturctor',
 		company: 'Dreams for Schools',
 		description:
-			"Build, style, and ship high-quality websites, design systems, mobile apps, and digital experiences for a diverse array of projects. Provide leadership within the engineering department through close collaboration, knowledge shares, and spearheading the development of internal tools.",
-		technologies: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'React Native'],
+			"Co-instructed to 3-5th grade students with hands on engineering proejcts and basics",
+		technologies: ['Engineering', 'Leadership'],
 		link: 'https://upstatement.com',
 		},
 		{
-		date: '2018 — 2024',
+		date: '2021 — 2023',
+		title: 'Security Intern',
+		company: 'County of Marin',
+		description:
+			"Assessed security risks and implemented security protocols in a team enviornment for the enterprise. Authored a 20 page security hadnbook, educating 2,400 county employees on cybersecurity threats. Conducted resaerch and created presentations for various security topics ",
+		technologies: ['SQL Injection', 'XSS', 'Social Engineering'],
+		link: 'https://upstatement.com',
+		},
+		{
+		date: 'Oct — Dec 2020',
 		title: 'Web Developer',
 		company: "Sophie's Masasge",
 		description:
-			"Build, style, and ship high-quality websites, design systems, mobile apps, and digital experiences for a diverse array of projects. Provide leadership within the engineering department through close collaboration, knowledge shares, and spearheading the development of internal tools.",
-		technologies: ['React', 'JavaScript', 'HTML' ],
+			"Developed and styled website for Sophie's Massage Therapy.",
+		technologies: ['React', 'JavaScript', 'HTML & CSS', 'AWS'],
 		link: 'http://www.sophiemassagetherapy.com/',
 		},
 		{
-		date: '2018 — 2024',
-		title: 'CS Tutor',
+		date: '2019 — 2020',
+		title: 'Student Tutor',
 		company: 'Santa Rosa Junior College',
 		description:
-			"Build, style, and ship high-quality websites, design systems, mobile apps, and digital experiences for a diverse array of projects. Provide leadership within the engineering department through close collaboration, knowledge shares, and spearheading the development of internal tools.",
-		technologies: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'React Native'],
+			"Computer Science and Math tutor helping students in 1 on 1 private sessions",
+		technologies: ['C++', 'Java', 'Calculus'],
 		link: 'https://upstatement.com',
 		},
   	];
 
+	const projects = [
+		{
+			image: stable_diffusion,
+			title: 'Stable Diffusin Clone',
+			alt: 'Stable Diffusion Clone',
+			description:
+				"Implemented Latent Dirichlet Allocation to conduct topic modeling on collection of student admission essays",
+			technologies: ['Python', 'PostgreSQL'],
+			link: 'https://netpropriate.com/',
+		},	
+		{
+			image: wav2vec,
+			title: 'Deepfake Audio Classifier',
+			alt: 'deepfake audio',
+			description:
+				"Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.",
+			technologies: ['Python', 'PostgreSQL'],
+			link: 'https://netpropriate.com/',
+		},	
+		{
+			image: minecraft,
+			title: 'Minecraft in C++',
+			alt: 'minecraft',
+			description:
+				"Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.",
+			technologies: ['Python', 'PostgreSQL'],
+			link: 'https://netpropriate.com/',
+		},	
+		{
+			image: cysafe,
+			title: 'Cysafe',
+			alt: 'cysafe',
+			description:
+				"Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.",
+			technologies: ['Python', 'PostgreSQL'],
+			link: 'https://netpropriate.com/',
+		},	
+		{
+			image: settlement,
+			title: 'Settlement Detection',
+			alt: 'settlement detection',
+			description:
+				"Implemented UNet3+ model for advanced electricity detection using satellite data on African settlements",
+			technologies: ['Python', 'PostgreSQL'],
+			link: 'https://netpropriate.com/',
+		},	
+	]
+
+	
   </script>
   
   
+<svelte:head>
+	<title>Kai | Portfolio</title>
+</svelte:head>
+
   <main class="main-container">
 
 	<div class="container">
@@ -115,7 +173,7 @@
 
 			<!-- Right side with scrollable content -->
 			<div class="right-container">
-			<section id="about" class="section">
+			<section id="about" class="about-paragraph">
 				<p>I love to build and create applications and models</p>
 			</section>
 			
@@ -176,6 +234,36 @@
 				  </ol>
 			</section>
 
+			<section id="projects" class="section">
+				<ol class="list">
+					{#each projects as project}
+					  <li class="experience">
+						<div class="content">
+						  <img class="project-image" src={project.image} width="190" height="115" alt="{project.alt}" />
+						  <div class="details">
+							<h3>
+							  	<a href={project.link} target="_blank" rel="noopener noreferrer">
+									{project.title}
+									<span class="experiences-redirect-icon">
+										<Icon name="Redirect" width="1rem" height="1rem"/> 
+									</span>
+								</a>
+							</h3>
+							<p>{project.description}</p>
+							<ul class="technologies">
+							  {#each project.technologies as tech}
+								<li>{tech}</li>
+							  {/each}
+							</ul>
+						  </div>
+						</div>
+					  </li>
+					{/each}
+				  </ol>
+				  <span>
+					<a href="/projects" class="view-all-projects">view all projects</a>
+				  </span>
+			</section>
 			</div>
 	</div>
   
@@ -187,17 +275,16 @@
 	.main-container {
 		display: flex;
 		height: 100vh; /* Full viewport height */
-		margin-left: 12%;
-		margin-right: 12%;
-		padding-left: 7%;
-		padding-right: 7%;
+		margin-left: 10%;
+		margin-right: 10%;
+		padding-left: 4%;
+		padding-right: 4%;
 	}
 
 	/* Main container to hold both left and right divs */
 	.container {
 		display: flex;
 		flex-grow: 1; /* Allow the container to stretch fully */
-		gap: 100px;
 		height: fit-content;
 	}
 
@@ -207,17 +294,17 @@
 		top: 0; /* Sticks to the top of the viewport */
 		max-height: 80vh;
 		min-width: fit-content;
-		width: 45%;
+		width: 40%;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		padding-top: 96px;
-		padding-left: 15%;
+		padding-left: 10%;
 	}
 
 	/* Right side, scrolling area */
 	.right-container {
-		width: 55%;
+		width: 60%;
 		flex-grow: 1;
 		height: fit-content;
 		padding-top: 96px;
@@ -304,7 +391,10 @@
 
 
 
-  
+	.about-paragraph{
+		margin-left: 20px;
+	}
+
 	/* Sections */
 	.section {
 	  height: fit-content;
@@ -338,6 +428,7 @@
 		display: grid;
 		grid-template-columns: 1fr 3fr;
 		gap: 1rem;
+		padding: 20px;
 		position: relative;
 	}
 
@@ -402,5 +493,15 @@
 		margin-left: 0.25rem;
 		width: 1rem;
 		height: 1rem;
+	}
+
+	.view-all-projects{
+		text-decoration: none;
+		color: white;
+		transition: all 0.2s ease;
+	}
+
+	.view-all-projects:hover{
+		text-decoration: underline;
 	}
   </style>
