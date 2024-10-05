@@ -1,53 +1,23 @@
 <script>
-	import Header from './Header.svelte';
-	import '../app.css';
-</script>
-
-<div class="app">
-	<Header />
-
-	<main>
-		<slot />
-	</main>
-
-	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-	</footer>
-</div>
-
-<style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
+	// Add any global JavaScript logic here if needed
+  </script>
+  
+  <style>
+	/* Global styles that apply to the entire app */
+	/* body {
+	  margin: 0;
+	  font-family: 'Arial', sans-serif;
 	}
-
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
-	}
-</style>
+  
+	.app-container {
+	  display: flex;
+	  min-height: 100vh;
+	  flex-direction: column;
+	} */
+  </style>
+  
+  <div class="app-container">
+	<!-- Slot for child pages -->
+	<slot />
+  </div>
+  
