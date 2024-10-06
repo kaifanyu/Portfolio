@@ -1,25 +1,45 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="title" content="Kai | Software Engineer / Cybersecurity" />
-		<meta name="description" content="Computer Science Major at UC Irvine" />
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="%sveltekit.assets%/favicon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="title" content="Kai | Software Engineer / Cybersecurity" />
+        <meta name="description" content="Computer Science Major at UC Irvine" />
 
-		%sveltekit.head%
-	</head>
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-	<body class="custom-body" data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
+        %sveltekit.head%
+    </head>
+
+    <body class="custom-body" data-sveltekit-preload-data="hover">
+        <div style="display: contents">%sveltekit.body%</div>
+    </body>
 </html>
 
 
 <style>
-	.custom-body {
-		background-color: #1b263b;
-		color: white;
-		margin: 0;
-	}
+    :root{
+        --background-color: #1b263b; /* Define the CSS variable */
+        --tab-color: #415a77;
+        --font-color: white;
+        --date-color:#94a3b8;
+        --indicator-line-color: white;
+        --section-title-color: white;
+        --section-detail-color: #cbd5e1;
+        --section-skills-color: #38bdf8;
+        --view-projects-color: white;
+        --paw-color: white;
+        --section-skills-bubble-color: rgba(56, 189, 248, 0.1);
+    }
+    .custom-body {
+        background-color: var(--background-color);
+        color: var(--font-color);
+        margin: 0;
+
+        font-family: "Work Sans", sans-serif;
+        font-optical-sizing: auto;
+        /* font-weight: <weight>; */
+        font-style: normal;
+    }
 </style>
