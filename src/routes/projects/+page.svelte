@@ -1,23 +1,8 @@
 <script>
-	
+	import "../glitch.css"
 </script>
 
-<canvas id="bgCanvas"></canvas>
-
-<style>
-		
-	body, html {
-		background-color: #000;
-		color: #fff;
-		width: 100%;
-		height: 100%;
-		margin: 0;
-		padding: 0;
-		overflow: hidden;
-	}
-	canvas {
-		position:absolute;
-		top:0;
-		left:0
-	}
-</style>
+<section>
+	  <h2 class="hero glitch layers" data-text="Kai"><span>Kai Yu</span></h2>
+</section>
+  

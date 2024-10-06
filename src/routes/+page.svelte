@@ -7,7 +7,9 @@
 	import research from '$lib/scripts/research';
 	import experiences from '$lib/scripts/experiences'
 	import projects from '$lib/scripts/projects';
+	import "./glitch.css"
 	import './style.css'
+
 
 	let loading = false;
 
@@ -39,7 +41,8 @@
 			<header class="left-container">
 
 				<div class="paragraph">
-					<h1 ><a class="name" href="/">Kai Yu</a></h1>
+					<!-- <h1 ><a class="name" href="/">Kai Yu</a></h1> -->
+					<h1 class="hero glitch layers" data-text="Kai"> <a class="name" href="/"><span>Kai Yu</span></a></h1>
 					<h2 class="title"> Software Engineer / Machine Learning Engineer</h2>
 					<p>I build games, application, and AI models.</p>
 
@@ -101,15 +104,17 @@
 
 			<!-- Right side with scrollable content -->
 			<div class="right-container">
-				<h2>About</h2>
+				<h2 class="about-title">About</h2>
 			<section id="about" class="about-paragraph">
-				<p>My interest in computers started after playing countless video games, which sparked my curiosity about how computers and programming really worked. Since then, I've learned a lot during my time at Santa Rosa Junior College and as an undergrad at the University of California, Irvine. At UCI, I discovered a deep appreciation for Artificial Intelligence and its limitless potential.
-					<br>
-					<br>
-				I graduated in 2024 with a focus on Intelligent Systems and have built numerous machine learning models and softwares that I believe make a meaningful impact—not just by automating tasks, but by offering solutions where it is needed the most. 
-					<br>
-					<br>
-				My most proud works are a deepfake audio classifier that will reduce the harm malicious deepfake AI will cause, electricity and settlement detection using satellite images for underdevloped Afrian villages, and hashing scraper that supports an agent application in preventing predatorial behavior in school and work enviornments.</p>
+				<p>
+					My interest in computers started after playing countless video games, which sparked my curiosity about how computers and programming really worked. Since then, I've learned a lot during my time at Santa Rosa Junior College and as an undergrad at the <b>University of California, Irvine</b>. At UCI, I discovered a deep appreciation for Artificial Intelligence and its limitless potential.
+						<br>
+						<br>
+					I graduated in 2024 with a focus on <b>Intelligent Systems</b> and have built numerous machine learning models and softwares that I believe make a meaningful impact—not just by automating tasks, but by offering solutions where it is needed the most. 
+						<br>
+						<br>
+					My most proud works are a <b>deepfake audio classifier</b> that will reduce the harm malicious deepfake AI will cause, electricity and <b>settlement detection</b> using satellite images for underdevloped Afrian villages, and hashing <b>scraper</b> that supports an agent application in preventing predatorial behavior in school and work enviornments.
+				</p>
 			</section>
 			
 
