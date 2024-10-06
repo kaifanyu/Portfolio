@@ -1,53 +1,23 @@
 <script>
-	import { onMount } from 'svelte';
-	let activeSection = ''; // This will track which section is currently in view
-  
-	onMount(() => {
-	  const sections = document.querySelectorAll('section');
-	  
-	  const observer = new IntersectionObserver((entries) => {
-		entries.forEach(entry => {
-		  if (entry.isIntersecting) {
-			activeSection = entry.target.id;
-		  }
-		});
-	  }, { threshold: 0.6 }); // Adjust threshold as needed (e.g., 60% of the section must be visible)
-  
-	  sections.forEach(section => {
-		observer.observe(section);
-	  });
-  
-	  return () => {
-		// Clean up observer when component is destroyed
-		observer.disconnect();
-	  };
-	});
-  </script>
-  
-  <style>
-	section {
-	  height: 100vh;
+	
+</script>
+
+<canvas id="bgCanvas"></canvas>
+
+<style>
+		
+	body, html {
+		background-color: #000;
+		color: #fff;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
 	}
-	.active {
-	  font-weight: bold;
-	  color: red;
+	canvas {
+		position:absolute;
+		top:0;
+		left:0
 	}
-  </style>
-  
-	<nav>
-	  <ul>
-		<li class={activeSection === 'section1' ? 'active' : ''}>Section 1</li>
-		<li class={activeSection === 'section2' ? 'active' : ''}>Section 2</li>
-		<li class={activeSection === 'section3' ? 'active' : ''}>Section 3</li>
-	  </ul>
-	</nav>
-  
-  <section id="section1">Section 1</section>
-  <section id="section2">Section 2</section>
-  <section id="section3">Section 3</section>
-  
-  <!-- Display active section -->
-  <div>
-	<p>Currently viewing: {activeSection}</p>
-  </div>
-  
+</style>

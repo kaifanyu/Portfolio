@@ -6,11 +6,18 @@ export const activeSection = writable<string>('about');
 
 let sections: HTMLElement[] = [];
 
-// Smooth scroll to section
-export const scrollToSection = (id: string) => {
+// Smooth scroll to section with additional offset
+export const scrollToSection = (id: string, offset: number = 100) => {
 	const section = document.getElementById(id);
 	if (section) {
-		section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		const sectionTop = section.getBoundingClientRect().top + window.scrollY; // Get the section's top position
+		const adjustedPosition = sectionTop - offset; // Adjust position by the desired offset
+		
+		window.scrollTo({
+			top: adjustedPosition,
+			behavior: 'smooth'
+		});
+		
 		activeSection.set(id); // Set active section manually on click
 	}
 };
@@ -20,10 +27,11 @@ export const handleScroll = () => {
 	const fromTop = window.scrollY;
 	let currentSection = 'about'; // Default section
 	sections.forEach((section) => {
-		if (section.offsetTop <= fromTop + 100) { // Adjust offset for earlier activation
+		if (section.offsetTop <= fromTop + 400) { // Adjust offset for earlier activation
 			currentSection = section.id;
 		}
 	});
+
 	activeSection.set(currentSection); // Update active section
 };
 

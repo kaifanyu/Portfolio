@@ -3,18 +3,18 @@
 <script lang="ts">
 	import Loading from './../lib/components/Loading.svelte';
 	import Icon from '$lib/components/Icon.svelte';
-	import { scrollToSection, activeSection, initScroll } from '$lib/scroll';
-	import research from '$lib/research';
-	import experiences from '$lib/experiences'
-	import projects from '$lib/projects';
+	import { scrollToSection, activeSection, initScroll } from '$lib/scripts/scroll';
+	import research from '$lib/scripts/research';
+	import experiences from '$lib/scripts/experiences'
+	import projects from '$lib/scripts/projects';
 	import './style.css'
 
-	let loading = true;
+	let loading = false;
 
-	setTimeout(() => {
-		console.log("here happen");
-	loading = false;
-	}, 1500); // 3 seconds delay
+	// setTimeout(() => {
+	// 	console.log("here happen");
+	// loading = false;
+	// }, 1500); // 3 seconds delay
 
 	initScroll();
   </script>
@@ -101,6 +101,7 @@
 
 			<!-- Right side with scrollable content -->
 			<div class="right-container">
+				<h2>About</h2>
 			<section id="about" class="about-paragraph">
 				<p>My interest in computers started after playing countless video games, which sparked my curiosity about how computers and programming really worked. Since then, I've learned a lot during my time at Santa Rosa Junior College and as an undergrad at the University of California, Irvine. At UCI, I discovered a deep appreciation for Artificial Intelligence and its limitless potential.
 					<br>
@@ -116,27 +117,29 @@
 				<h2>Research </h2>
 				<ol class="list">
 					{#each research as exp}
-					  <li class="experience">
-						<div class="content">
-						  <header class="date">{exp.date}</header>
-						  <div class="details">
-							<h3>
-							  	<a href={exp.link} target="_blank" rel="noopener noreferrer">
-									{exp.title} · {exp.company} 
-									<span class="experiences-redirect-icon">
-										<Icon name="Redirect" width="1rem" height="1rem"/> 
-									</span>
-								</a>
-							</h3>
-							<p>{exp.description}</p>
-							<ul class="technologies">
-							  {#each exp.technologies as tech}
-								<li>{tech}</li>
-							  {/each}
-							</ul>
-						  </div>
-						</div>
-					  </li>
+					<a href="{exp.link}" class="section-href">
+						<li class="experience">
+							<div class="content">
+							<header class="date">{exp.date}</header>
+							<div class="details">
+								<h3>
+									<a href={exp.link} target="_blank" rel="noopener noreferrer">
+										{exp.title} · {exp.company} 
+										<span class="experiences-redirect-icon">
+											<Icon name="Redirect" width="1rem" height="1rem"/> 
+										</span>
+									</a>
+								</h3>
+								<p>{exp.description}</p>
+								<ul class="technologies">
+								{#each exp.technologies as tech}
+									<li>{tech}</li>
+								{/each}
+								</ul>
+							</div>
+							</div>
+						</li>
+					</a>
 					{/each}
 				  </ol>
 			</section>
@@ -146,6 +149,7 @@
 				<h2>Experience</h2>
 				<ol class="list">
 					{#each experiences as exp}
+					<a href="{exp.link}" class="section-href">
 					  <li class="experience">
 						<div class="content">
 						  <header class="date">{exp.date}</header>
@@ -167,6 +171,7 @@
 						  </div>
 						</div>
 					  </li>
+					</a>
 					{/each}
 				  </ol>
 			</section>
@@ -175,9 +180,11 @@
 				<h2>Projects</h2>
 				<ol class="list">
 					{#each projects as project}
+					<a href="{project.link}" class="section-href">
+
 					  <li class="experience">
-						<div class="content">
-						  <img class="project-image" src={project.image} width="190" height="115" alt="{project.alt}" />
+						<div class="project-content">
+						  <img class="project-image" src={project.image}  alt="{project.alt}" />
 						  <div class="details">
 							<h3>
 							  	<a href={project.link} target="_blank" rel="noopener noreferrer">
@@ -193,9 +200,15 @@
 								<li>{tech}</li>
 							  {/each}
 							</ul>
-						  </div>
-						</div>
-					  </li>
+							
+								</div>
+							</div>
+							<div class="project-screenshot">
+								<img class="project-screenshot-image" src={project.sc1} alt="{project.alt}" />
+								<img class="project-screenshot-image" src={project.sc2} alt="{project.alt}" />
+								<img class="project-screenshot-image" src={project.sc3} alt="{project.alt}" />
+							</div>
+						</li> </a>
 					{/each}
 				  </ol>
 				  <span>
