@@ -304,3 +304,44 @@ li.experience:hover {
 .view-all-projects:hover{
     text-decoration: underline;
 }
+
+
+
+/* for mobile screens */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .left-container {
+        position: relative;
+        width: 100%;
+        max-height: fit-content;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .social-media{
+        margin-top: 5rem;
+    }
+    .right-container {
+        margin-top: -5rem;
+        padding-top: 0;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .project-content{
+        display: flex;
+        flex-direction: column;
+    }
+    .project-screenshot-image {
+        width: 80%;
+        height: 50%;
+    }
+
+    .project-image {
+        width: 80%;
+        height: 50%;
+    }
+}
