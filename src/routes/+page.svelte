@@ -23,7 +23,7 @@
   
   
 <svelte:head>
-	<title>Kai | Portfolio</title>
+	<title>Kai</title>
 </svelte:head>
 
 
