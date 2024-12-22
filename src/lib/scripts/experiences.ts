@@ -5,7 +5,7 @@ const experiences = [
     title: 'Software Engineer Intern',
     company: 'Netpropriate',
     description:
-        "Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.",
+        "Developed a Python web scraper using Scrapy to extract and process over 100 million data hashes, storing results in PostgreSQL. Authorized a comprehensive SRS document outlining system functionalities, technical requirements, and project scope.",
     technologies: ['Python', 'PostgreSQL'],
     link: 'https://netpropriate.com/',
     },
@@ -23,7 +23,7 @@ const experiences = [
     title: 'Security Intern',
     company: 'County of Marin',
     description:
-        "Assessed security risks and implemented security protocols in a team enviornment for the enterprise. Authored a 20 page security hadnbook, educating 2,400 county employees on cybersecurity threats. Conducted resaerch and created presentations for various security topics ",
+        "Assessed security risks and implemented security protocols in a team environment for the enterprise. Authored a 20 page security handbook, educating 2,400 county employees on cybersecurity threats. Conducted research and created presentations for various security topics.",
     technologies: ['SQL Injection', 'XSS', 'Social Engineering'],
     link: 'https://www.marincounty.gov/departments/it/about-information-services-and-technology-department',
     },
