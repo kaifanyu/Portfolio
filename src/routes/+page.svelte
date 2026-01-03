@@ -10,15 +10,25 @@
 	import "./glitch.css"
 	import './style.css'
 
-
+	
+	import { fade, slide } from 'svelte/transition'; // [cite: 22]
+	
 	let loading = false;
+	let copied = false;
+	const emailAddress = "kaifany@seas.upenn.edu"; // Replace with your actual email
 
-	// setTimeout(() => {
-	// 	console.log("here happen");
-	// loading = false;
-	// }, 1500); // 3 seconds delay
+	function copyEmail() {
+		navigator.clipboard.writeText(emailAddress);
+		copied = true;
+		
+		// Hide the message after 2 seconds
+		setTimeout(() => {
+		copied = false;
+		}, 2000);
+	}
 
-	initScroll();
+    let showAllExperiences = false;
+	let showAllResearch = false;
   </script>
   
   
@@ -43,7 +53,7 @@
 				<div class="paragraph">
 					<!-- <h1 ><a class="name" href="/">Kai Yu</a></h1> -->
 					<h1 class="hero glitch layers" data-text="Kai"> <a class="name" href="/"><span>Kai Yu</span></a></h1>
-					<h2 class="title"> Software Engineer / Machine Learning Engineer</h2>
+					<h2 class="title"> Robotics Engineer</h2>
 					<p>I build games, application, and AI models.</p>
 
 					<nav class="nav-section">
@@ -95,8 +105,20 @@
 							<Icon name="LinkedIn" width="2rem" height="2rem"/>
 						</a>
 					</li>
-					<li>
+					<li class="email-container">
+					<button 
+						class="icon email-button" 
+						on:click={copyEmail} 
+						aria-label="Copy email address"
+					>
 						<Icon name="Email" width="2rem" height="2rem"/>
+					</button>
+
+					{#if copied}
+						<span class="copied-msg" transition:fade={{ duration: 200 }}>
+						Email copied to clipboard
+						</span>
+					{/if}
 					</li>
 				</ul>
 			</header>
@@ -106,80 +128,105 @@
 			<div class="right-container">
 				<h2 class="about-title">About</h2>
 			<section id="about" class="about-paragraph">
-				<p>
-					My interest in computers started after playing countless video games, which sparked my curiosity about how computers and programming really worked. Since then, I've learned a lot during my time at Santa Rosa Junior College and as an undergrad at the <b>University of California, Irvine</b>. At UCI, I discovered a deep appreciation for Artificial Intelligence and its limitless potential.
-						<br>
-						<br>
-					I graduated in 2024 with a focus on <b>Intelligent Systems</b> and have built numerous machine learning models and softwares that I believe make a meaningful impact—not just by automating tasks, but by offering solutions where it is needed the most. 
-						<br>
-						<br>
-					My most proud works are a <b>deepfake audio classifier</b> that will reduce the harm malicious deepfake AI will cause, electricity and <b>settlement detection</b> using satellite images for underdevloped Afrian villages, and hashing <b>scraper</b> that supports an agent application in preventing predatorial behavior in school and work enviornments.
-				</p>
+			<p>
+				I am an <b>M.S.E. Robotics</b> student at the University of Pennsylvania, dedicated to building intelligent autonomous systems. 
+				With a strong technical foundation in <b>C++</b> and <b>ROS2</b>, I develop robust software for robot perception and navigation. 
+				Currently, my research focuses on <b>Generative World Models</b>, exploring how agents can leverage predictive dynamics for smarter decision-making in complex environments.
+			</p>
 			</section>
-			
+
 
 			<section id="research" class="section">
-				<h2>Research </h2>
-				<ol class="list">
-					{#each research as exp}
+			<h2>Research</h2>
+			<ol class="list">
+				{#each (showAllResearch ? research : research.slice(0, 2)) as exp}
+				<div transition:slide={{ duration: 300 }}>
 					<a href="{exp.link}" class="section-href">
 						<li class="experience">
 							<div class="content">
-							<header class="date">{exp.date}</header>
-							<div class="details">
-								<h3>
-									<a href={exp.link} target="_blank" rel="noopener noreferrer">
-										{exp.title} · {exp.company} 
-										<span class="experiences-redirect-icon">
-											<Icon name="Redirect" width="1rem" height="1rem"/> 
-										</span>
-									</a>
-								</h3>
-								<p>{exp.description}</p>
-								<ul class="technologies">
-								{#each exp.technologies as tech}
-									<li>{tech}</li>
-								{/each}
-								</ul>
-							</div>
+								<header class="date">{exp.date}</header>
+								<div class="details">
+									<h3>
+										<a href={exp.link} target="_blank" rel="noopener noreferrer">
+											{exp.title} 
+											<br>
+											<span class="company-label">
+												{exp.company}
+											</span>
+
+											<span class="experiences-redirect-icon">
+												<Icon name="Redirect" width="1rem" height="1rem"/> 
+											</span>
+										</a>
+									</h3>
+									<p>{exp.description}</p>
+									<ul class="technologies">
+										{#each exp.technologies as tech}
+											<li>{tech}</li>
+										{/each}
+									</ul>
+								</div>
 							</div>
 						</li>
 					</a>
-					{/each}
-				  </ol>
-			</section>
+				</div>
+				{/each}
+			</ol>
 
+    {#if research.length > 2}
+        <div style="margin-top: 10px;">
+            <button 
+                class="view-all-projects" 
+                style="background: none; border: none; padding: 0; font: inherit; cursor: pointer;"
+                on:click={() => showAllResearch = !showAllResearch}
+            >
+                {showAllResearch ? 'show less' : 'view full research'}
+            </button>
+        </div>
+    {/if}
+</section>
+<section id="experience" class="section">
+    <h2>Experience</h2>
+    <ol class="list">
+        {#each (showAllExperiences ? experiences : experiences.slice(0, 2)) as exp}
+        <div transition:slide={{ duration: 300 }}> 
+            <a href="{exp.link}" class="section-href">
+                <li class="experience">
+                    <div class="content">
+                        <header class="date">{exp.date}</header>
+                        <div class="details">
+                            <h3>
+                                <a href={exp.link} target="_blank" rel="noopener noreferrer">
+                                    {exp.title} · {exp.company} 
+                                    <span class="experiences-redirect-icon">
+                                        <Icon name="Redirect" width="1rem" height="1rem"/> 
+                                    </span>
+                                </a>
+                            </h3>
+                            <p>{exp.description}</p>
+                            <ul class="technologies">
+                                {#each exp.technologies as tech}
+                                    <li>{tech}</li>
+                                {/each}
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </a>
+        </div>
+        {/each}
+    </ol>
 
-			<section id="experience" class="section">
-				<h2>Experience</h2>
-				<ol class="list">
-					{#each experiences as exp}
-					<a href="{exp.link}" class="section-href">
-					  <li class="experience">
-						<div class="content">
-						  <header class="date">{exp.date}</header>
-						  <div class="details">
-							<h3>
-							  	<a href={exp.link} target="_blank" rel="noopener noreferrer">
-									{exp.title} · {exp.company} 
-									<span class="experiences-redirect-icon">
-										<Icon name="Redirect" width="1rem" height="1rem"/> 
-									</span>
-								</a>
-							</h3>
-							<p>{exp.description}</p>
-							<ul class="technologies">
-							  {#each exp.technologies as tech}
-								<li>{tech}</li>
-							  {/each}
-							</ul>
-						  </div>
-						</div>
-					  </li>
-					</a>
-					{/each}
-				  </ol>
-			</section>
+    <div style="margin-top: 10px;">
+        <button 
+            class="view-all-projects" 
+            style="background: none; border: none; padding: 0; font: inherit; cursor: pointer;"
+            on:click={() => showAllExperiences = !showAllExperiences}
+        >
+            {showAllExperiences ? 'show less' : 'view full experience'}
+        </button>
+    </div>
+</section>
 
 			<section id="projects" class="section">
 				<h2>Projects</h2>
@@ -226,3 +273,5 @@
 </main>
 
 {/if}
+<style>
+</style>

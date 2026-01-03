@@ -265,22 +265,47 @@ li.experience:hover {
     border-radius: 9999px;
 }
 
-.project-screenshot{
-    display: none;  
-}   
+/* Add this to style.css or <style> in +page.svelte */
+.company-label {
+    font-weight: 400; /* Makes it regular text, not bold */
+    color: var(--date-color); /* Uses your existing gray (#94a3b8) for contrast */
+    /* Alternatively, use var(--section-detail-color) for a slightly brighter gray */
+    font-size: 0.95em; /* Optional: Makes it just a tiny bit smaller */
+}
 
+/* Optional: Ensure the hover effect doesn't tint the gray text weirdly */
+.details h3 a:hover .company-label {
+    color: var(--section-skills-color); /* Optional: turns blue on hover like the title */
+    transition: color 0.2s ease;
+}
+.project-screenshot {
+    /* Layout: Keep it flex so it's ready to show, but hide it visually */
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    
+    /* Animation Properties */
+    max-height: 0;       /* Start with 0 height */
+    opacity: 0;          /* Start invisible */
+    overflow: hidden;    /* Ensure content doesn't spill out when closed */
+    padding-bottom: 0;   /* Remove padding when closed */
+
+    /* The Transition Magic */
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, padding-bottom 0.5s ease;
+}
+
+.experience:hover .project-screenshot {
+    /* Open State */
+    max-height: 300px;   /* Set a value larger than your images (approx 200-300px) */
+    opacity: 1;          /* Fade in */
+    padding-bottom: 20px; /* Add space at the bottom */
+}
 .project-image{
     width: 100%;
     min-height: 150px;
     height: 80%;
-}
-.experience:hover .project-screenshot{
-    display: flex;
-    justify-content: space-between;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-bottom: 20px;
-    gap: 20px; 
 }
 
 .project-screenshot-image{
@@ -306,6 +331,59 @@ li.experience:hover {
 }
 
 
+  /* 1. Container for positioning the tooltip relative to the icon */
+  .email-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 2. Reset button styles to match your link icons */
+  .email-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: inherit;
+    
+    /* FIX: Explicitly set size and prevent flex-shrinking */
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    
+    transition: opacity 0.2s ease;
+  }
+  
+  /* FIX: Ensure the SVG inside the button fills the 2rem container */
+  .email-button :global(svg) {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+
+  .email-button:hover {
+    opacity: 0.7;
+  }
+
+  /* 3. The "Simple" Floating Message */
+  .copied-msg {
+    position: absolute;
+    bottom: -30px; /* Pushes text just below the icon */
+    left: 50%;
+    transform: translateX(-50%); /* Centers text horizontally */
+    
+    background-color: #333; /* Dark background */
+    color: #fff;            /* White text */
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;     /* Small, subtle font */
+    white-space: nowrap;    /* Keeps it on one line */
+    pointer-events: none;   /* Prevents it from blocking clicks */
+    z-index: 10;            /* Ensures it appears above other elements */
+  }
 
 /* for mobile screens */
 @media screen and (max-width: 768px) {

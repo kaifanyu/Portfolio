@@ -1,7 +1,16 @@
 
 const experiences = [
     {
-    date: '2023 — Present',
+    date: '2025 — 2026',
+    title: 'Robotics Intern',
+    company: 'UNIS',
+    description:
+        "Implemented autonomous yard patrols using a quadruped robot, enabling waypoint navigation, dynamic obstacle avoidance, sensor-based image capture, and web-based monitoring and control. Created full-stack AI guest check-in system, supporting visitor/employee appointments and real-time status tracking.",
+    technologies: ['C++', 'Unitree', 'ROS2', 'React'],
+    link: 'https://netpropriate.com/',
+    },
+    {
+    date: '2023 — 2025',
     title: 'Software Engineer Intern',
     company: 'Netpropriate',
     description:

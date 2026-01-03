@@ -1,6 +1,23 @@
 const research = [
+        {
+    date: '2025 — Present',
+    title: 'Generative World Model',
+    company: 'Jiatao Gu Research Group, UPenn',
+    description: "Conducted research on world models for agent-centric prediction and decision-making, including current and latent dynamics formulations.  Developed and trained flow and diffusion based generative models for controllable sequence generation, and implemented preliminary energy-based model variants",
+    technologies: ['Python','Diffusion Models', 'Generative AI'],
+    link: 'https://dl.acm.org/doi/abs/10.1145/3408877.3439664',
+    },	
     {
-    date: '2024 — Present',
+    date: '2025 — Present',
+    title: 'HAMR: Holonomic Autonomous Mobile Robot',
+    company: 'ModLab, Upenn',
+    description:
+        "Implemented sensor calibration and EKF for sensor fusion, contributed to holonomy analysis, 2.5D planning, and off-road simulation with sensor integration. Developed computer vision modules for visual SLAM and subject tracking in rough off-road conditions",
+    technologies: ['Python', 'SLAM', 'Controls', 'Planning'],
+    link: 'https://dl.acm.org/doi/abs/10.1145/3408877.3439664',
+    },	
+    {
+    date: '2024 — 2025',
     title: 'Topic Modeling and Analysis',
     company: 'UC Irvine',
     description:
@@ -9,7 +26,7 @@ const research = [
     link: 'https://dl.acm.org/doi/abs/10.1145/3408877.3439664',
     },	
     {
-    date: '2024 — Present',
+    date: '2024 — 2025',
     title: 'ML Prediction on PFAS Contamination',
     company: 'UC Irvine',
     description:

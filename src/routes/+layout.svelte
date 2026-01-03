@@ -1,5 +1,7 @@
 <script>
 	// Add any global JavaScript logic here if needed
+	import BackgroundNoise from '$lib/components/BackgroundNoise.svelte';
+  	import '../app.css';
   </script>
   
   <style>
@@ -18,6 +20,8 @@
   
   <div class="app-container">
 	<!-- Slot for child pages -->
+	 <BackgroundNoise />
 	<slot />
   </div>
+  
   
