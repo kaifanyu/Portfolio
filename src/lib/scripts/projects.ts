@@ -25,8 +25,24 @@ import cysafe1 from '$lib/images/cysafe1.png'
 import cysafe2 from '$lib/images/cysafe2.png'
 import cysafe3 from '$lib/images/cysafe3.png'
 
+import rocky from '$lib/images/RoboRocky/rocky.gif'
+import rocky1 from '$lib/images/RoboRocky/rocky1.png'
+import rocky2 from '$lib/images/RoboRocky/rocky2.png'
+import rocky3 from '$lib/images/RoboRocky/rocky3.gif'
 
 const projects = [
+    {
+        image: rocky,
+        title: 'RoboRocky',
+        alt: 'RoboRocky',
+        description:
+            "Developed a planar boxing-arm simulator that uses Model Predictive Control with iLQR to generate fast, contact-rich attack, block, and parry motions between two opposing robotic arms. The system demonstrates real-time trajectory optimization and adaptive defensive behaviors.",
+        technologies: ['Python', 'MPC', 'Controls'],
+        link: 'https://github.com/kaifanyu/RoboRocky',
+        sc1: rocky1,
+        sc2: rocky2,
+        sc3: rocky3,
+    },	
     {
         image: stable_diffusion,
         title: 'Stable Diffusin Clone',
