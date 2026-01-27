@@ -43,18 +43,18 @@ const projects = [
         sc2: rocky2,
         sc3: rocky3,
     },	
-    {
-        image: stable_diffusion,
-        title: 'Stable Diffusin Clone',
-        alt: 'Stable Diffusion Clone',
-        description:
-            "Developed a Stable Diffusion clone in Python from scratch, utilizing diffusion techniques capable of generating images from text, images, and performing inpainting. The model incorporates CLIP embeddings and a variational autoencoder.",
-        technologies: ['Python'],
-        link: 'https://github.com/kaifanyu/Stable-Diffusion-Clone',
-        sc1: stable1,
-        sc2: stable2,
-        sc3: stable3,
-    },	
+    // {
+    //     image: stable_diffusion,
+    //     title: 'Stable Diffusin Clone',
+    //     alt: 'Stable Diffusion Clone',
+    //     description:
+    //         "Developed a Stable Diffusion clone in Python from scratch, utilizing diffusion techniques capable of generating images from text, images, and performing inpainting. The model incorporates CLIP embeddings and a variational autoencoder.",
+    //     technologies: ['Python'],
+    //     link: 'https://github.com/kaifanyu/Stable-Diffusion-Clone',
+    //     sc1: stable1,
+    //     sc2: stable2,
+    //     sc3: stable3,
+    // },	
     {
         image: wav2vec,
         title: 'Deepfake Audio Classifier',
