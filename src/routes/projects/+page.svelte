@@ -1,8 +1,5 @@
 <script>
-	import "../glitch.css"
+  import Starfield from '$lib/components/StarBackground.svelte';
 </script>
 
-<section>
-	  <h2 class="hero glitch layers" data-text="Kai"><span>Kai Yu</span></h2>
-</section>
-  
+<Starfield />
