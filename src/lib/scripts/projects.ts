@@ -29,6 +29,7 @@ export interface Project {
 	category: string;
 	image: string;
 	alt: string;
+	thumbnails?: { src: string; alt: string }[];
 	description: string;
 	technologies: string[];
 	link: string;
@@ -46,6 +47,15 @@ const projects: Project[] = [
 		category: 'ModLab · Mobile robotics',
 		image: '/images/projects/hamr/caster-tracking.png',
 		alt: 'Dual-camera caster tracking with geometry overlays, a 3D model, and rotation estimates',
+		// Add your images to static/images/projects/hamr/ and set the paths below.
+		thumbnails: [
+			{
+				src: '/images/projects/hamr/caster-tracking.png',
+				alt: 'Dual-camera caster tracking with geometry overlays and rotation estimates'
+			},
+			{ src: '', alt: 'HAMR image 2' },
+			{ src: '', alt: 'HAMR image 3' }
+		],
 		description:
 			'Connecting caster mechanics, visual sensing, and feedback control in a holonomic mobile robot. Work spans dual-camera caster tracking, depth-camera localization, and ROS 2 / embedded PID control.',
 		technologies: ['ROS 2', 'Computer Vision', 'SLAM', 'PID Control'],
@@ -63,13 +73,35 @@ const projects: Project[] = [
 			'Exploring 3D Gaussian Splatting for indoor scene reconstruction from RGB-D lap recordings, calibrated camera data, and robot poses.',
 		technologies: ['3D Gaussian Splatting', 'RGB-D', 'Open3D'],
 		link: '/projects/f1-3dgs',
+		featured: false,
+		showcase: true
+	},
+	{
+		slug: 'rl-vla',
+		title: 'RL-VLA',
+		category: 'Robot learning · Reinforcement learning',
+		image: '/images/projects/rl-vla/residual-policy.svg',
+		alt: 'A frozen OpenPI policy combined with learned SAC or PPO action corrections',
+		// Add your images to static/images/projects/rl-vla/ and set the paths below.
+		thumbnails: [
+			{
+				src: '/images/projects/rl-vla/residual-policy.svg',
+				alt: 'A frozen OpenPI policy combined with learned SAC or PPO action corrections'
+			},
+			{ src: '', alt: 'RL-VLA image 2' },
+			{ src: '', alt: 'RL-VLA image 3' }
+		],
+		description:
+			'A residual reinforcement learning framework around a frozen vision-language-action policy. SAC and PPO learn bounded action corrections through a shared training and evaluation pipeline.',
+		technologies: ['PyTorch', 'SAC / PPO', 'OpenPI', 'LIBERO'],
+		link: '/projects/rl-vla',
 		featured: true,
 		showcase: true
 	},
 	{
 		slug: 'roborocky',
 		category: 'Robotics · Optimal control',
-		featured: true,
+		featured: false,
 		image: rocky,
 		title: 'RoboRocky',
 		alt: 'RoboRocky',

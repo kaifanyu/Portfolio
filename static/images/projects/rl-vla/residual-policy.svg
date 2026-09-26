@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500" viewBox="0 0 1000 500" fill="none">
+  <title>RL-VLA residual policy architecture</title>
+  <desc>A frozen OpenPI policy supplies base actions. A SAC or PPO actor learns bounded residual corrections. The two are combined into controller actions.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1000" y2="500" gradientUnits="userSpaceOnUse"><stop stop-color="#20354c"/><stop offset="1" stop-color="#101d2e"/></linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="m1 1 7 4-7 4" stroke="#91c8df" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+  <rect width="1000" height="500" fill="url(#bg)"/>
+  <g stroke="#91c8df" opacity=".08"><path d="M0 100h1000M0 200h1000M0 300h1000M0 400h1000M100 0v500M200 0v500M300 0v500M400 0v500M500 0v500M600 0v500M700 0v500M800 0v500M900 0v500"/></g>
+  <text x="60" y="65" fill="#91c8df" font-family="Arial, sans-serif" font-size="18" letter-spacing="3">RL-VLA / RESIDUAL LEARNING</text>
+  <rect x="70" y="133" width="306" height="96" rx="12" fill="#223b53" stroke="#6684a0"/>
+  <text x="223" y="171" text-anchor="middle" fill="#eef3fa" font-family="Arial, sans-serif" font-size="25">OpenPI policy</text>
+  <text x="223" y="202" text-anchor="middle" fill="#a6b9ce" font-family="Arial, sans-serif" font-size="18">Frozen base actions</text>
+  <rect x="70" y="291" width="306" height="96" rx="12" fill="#24454e" stroke="#79b2b9"/>
+  <text x="223" y="329" text-anchor="middle" fill="#eef3fa" font-family="Arial, sans-serif" font-size="25">Residual actor</text>
+  <text x="223" y="360" text-anchor="middle" fill="#a6ced0" font-family="Arial, sans-serif" font-size="18">SAC / PPO · learned corrections</text>
+  <g stroke="#91c8df" stroke-width="2" marker-end="url(#arrow)"><path d="M376 181h101q22 0 22 22v35h36"/><path d="M376 339h101q22 0 22-22v-35h36"/><path d="M608 260h84"/></g>
+  <circle cx="573" cy="260" r="36" fill="#1d3449" stroke="#91c8df" stroke-width="2"/>
+  <path d="M559 260h28m-14-14v28" stroke="#c8e1eb" stroke-width="2"/>
+  <rect x="700" y="212" width="233" height="96" rx="12" fill="#223b53" stroke="#6684a0"/>
+  <text x="816" y="251" text-anchor="middle" fill="#eef3fa" font-family="Arial, sans-serif" font-size="25">Controller</text>
+  <text x="816" y="281" text-anchor="middle" fill="#a6b9ce" font-family="Arial, sans-serif" font-size="18">Bounded actions</text>
+  <text x="60" y="450" fill="#8099b4" font-family="Arial, sans-serif" font-size="16">A fixed base policy. A small, trainable correction.</text>
+</svg>

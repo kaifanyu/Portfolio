@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="robots" content="noindex,nofollow" />
+		<title>Background options · Kai Yu</title>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				margin: 0;
+				background: #f2f3f5;
+				color: #1d2530;
+				font-family:
+					system-ui,
+					-apple-system,
+					sans-serif;
+			}
+			button,
+			a {
+				font: inherit;
+			}
+			button {
+				cursor: pointer;
+			}
+			button:focus-visible,
+			a:focus-visible {
+				outline: 2px solid #3f68a1;
+				outline-offset: 4px;
+			}
+			.toolbar {
+				background: #fff;
+				border-bottom: 1px solid #dedfe3;
+				padding: 22px 32px 18px;
+			}
+			.topline {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 20px;
+				margin-bottom: 20px;
+			}
+			h1 {
+				font-size: 19px;
+				letter-spacing: -0.5px;
+				font-weight: 600;
+				margin: 0 0 5px;
+			}
+			.intro {
+				font-size: 12px;
+				color: #747b86;
+				margin: 0;
+			}
+			.back {
+				color: #606b7a;
+				text-decoration: none;
+				font-size: 12px;
+				white-space: nowrap;
+			}
+			.controls {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 20px;
+				flex-wrap: wrap;
+			}
+			.themes {
+				display: flex;
+				gap: 8px;
+				flex-wrap: wrap;
+			}
+			.theme {
+				display: flex;
+				align-items: center;
+				gap: 9px;
+				border: 1px solid #dedfe3;
+				padding: 9px 12px;
+				border-radius: 8px;
+				background: #fff;
+				color: #505b6b;
+				font-size: 12px;
+			}
+			.theme[aria-pressed='true'] {
+				color: #202c3c;
+				border-color: #788b9f;
+				background: #f3f5f7;
+				box-shadow: 0 0 0 1px #788b9f;
+			}
+			.swatch {
+				display: block;
+				width: 21px;
+				height: 21px;
+				border-radius: 50%;
+				border: 1px solid #0002;
+				position: relative;
+			}
+			.swatch::after {
+				content: '';
+				position: absolute;
+				width: 6px;
+				height: 6px;
+				right: 1px;
+				bottom: 1px;
+				border-radius: 50%;
+				background: var(--accent);
+				border: 1px solid #fff8;
+			}
+			.sizes {
+				display: flex;
+				background: #f3f4f6;
+				padding: 3px;
+				border-radius: 7px;
+				gap: 3px;
+			}
+			.sizes button {
+				border: 0;
+				background: transparent;
+				color: #657080;
+				padding: 7px 12px;
+				border-radius: 5px;
+				font-size: 11px;
+			}
+			.sizes button[aria-pressed='true'] {
+				background: #fff;
+				color: #263347;
+				box-shadow: 0 1px 4px #15243215;
+			}
+			.selection {
+				display: flex;
+				align-items: baseline;
+				gap: 12px;
+				padding: 15px 32px;
+				margin: 0;
+				font-size: 12px;
+				line-height: 1.6;
+				color: #606b7a;
+			}
+			.selection strong {
+				color: #263347;
+				font-weight: 600;
+			}
+			.selection code {
+				font-size: 10px;
+				color: #747e8c;
+				margin-left: auto;
+				white-space: nowrap;
+			}
+			.canvas {
+				padding: 0 24px 24px;
+			}
+			.frame {
+				background: #fff;
+				border: 1px solid #d9dde3;
+				border-radius: 10px;
+				overflow: hidden;
+				box-shadow: 0 8px 28px #15243208;
+				margin: 0 auto;
+			}
+			.frame.mobile {
+				max-width: 390px;
+			}
+			iframe {
+				display: block;
+				width: 100%;
+				height: calc(100vh - 220px);
+				min-height: 560px;
+				border: 0;
+			}
+			.frame.mobile iframe {
+				height: 780px;
+			}
+			@media (max-width: 680px) {
+				.toolbar {
+					padding: 18px 16px;
+				}
+				.topline {
+					align-items: flex-start;
+				}
+				h1 {
+					font-size: 17px;
+				}
+				.intro {
+					max-width: 230px;
+					font-size: 11px;
+					line-height: 1.6;
+				}
+				.controls {
+					gap: 14px;
+				}
+				.theme {
+					padding: 8px 10px;
+				}
+				.selection {
+					flex-wrap: wrap;
+					padding: 14px 16px;
+					gap: 4px 10px;
+				}
+				.selection code {
+					margin-left: 0;
+				}
+				.canvas {
+					padding: 0 10px 16px;
+				}
+				iframe {
+					min-height: 650px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header class="toolbar">
+			<div class="topline">
+				<div>
+					<h1>A quieter background.</h1>
+					<p class="intro">
+						Compare four directions on your portfolio. These previews do not change your site.
+					</p>
+				</div>
+				<a class="back" href="/">Back to portfolio ↗</a>
+			</div>
+			<div class="controls">
+				<div class="themes" role="group" aria-label="Background options" id="themes"></div>
+				<div class="sizes" role="group" aria-label="Preview width">
+					<button type="button" data-size="desktop" aria-pressed="true">Desktop</button>
+					<button type="button" data-size="mobile" aria-pressed="false">Mobile</button>
+				</div>
+			</div>
+		</header>
+		<p class="selection" aria-live="polite">
+			<strong id="name"></strong><span id="description"></span><code id="colors"></code>
+		</p>
+		<main class="canvas">
+			<div class="frame" id="frame">
+				<iframe src="/" title="Portfolio background preview" id="portfolio"></iframe>
+			</div>
+		</main>
+		<script type="module">
+			import { themes } from './design-options/themes.js';
+			const options = [
+				...themes,
+				{
+					id: 'original',
+					name: 'Current',
+					description: 'Your current Graphite theme with subtle film grain.',
+					background: '#1C2026',
+					accent: '#9BC4CE',
+					css: ''
+				}
+			];
+			const iframe = document.querySelector('#portfolio');
+			const requested = new URL(location.href).searchParams.get('theme');
+			let selected =
+				options.find((theme) => theme.id === requested) ||
+				options.find((theme) => theme.id === 'graphite');
+			const buttons = options.map((theme) => {
+				const button = document.createElement('button');
+				button.type = 'button';
+				button.className = 'theme';
+				button.dataset.theme = theme.id;
+				const swatch = document.createElement('span');
+				swatch.className = 'swatch';
+				swatch.setAttribute('aria-hidden', 'true');
+				swatch.style.background = theme.background;
+				swatch.style.setProperty('--accent', theme.accent);
+				button.append(swatch, document.createTextNode(theme.name));
+				button.addEventListener('click', () => {
+					selected = theme;
+					apply();
+				});
+				document.querySelector('#themes').append(button);
+				return button;
+			});
+			function apply() {
+				buttons.forEach((button) =>
+					button.setAttribute('aria-pressed', String(button.dataset.theme === selected.id))
+				);
+				document.querySelector('#name').textContent = selected.name;
+				document.querySelector('#description').textContent = selected.description;
+				document.querySelector('#colors').textContent =
+					`${selected.background} / ${selected.accent}`;
+				iframe.title = `${selected.name} — portfolio preview`;
+				const url = new URL(location.href);
+				url.searchParams.set('theme', selected.id);
+				history.replaceState(null, '', url);
+				const documentInside = iframe.contentDocument;
+				if (!documentInside?.head) return;
+				let style = documentInside.querySelector('#portfolio-theme-preview');
+				if (!style) {
+					style = documentInside.createElement('style');
+					style.id = 'portfolio-theme-preview';
+					documentInside.head.append(style);
+				}
+				style.textContent = selected.css;
+			}
+			iframe.addEventListener('load', apply);
+			for (const button of document.querySelectorAll('[data-size]')) {
+				button.addEventListener('click', () => {
+					const mobile = button.dataset.size === 'mobile';
+					document.querySelector('#frame').classList.toggle('mobile', mobile);
+					document
+						.querySelectorAll('[data-size]')
+						.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+				});
+			}
+			apply();
+		</script>
+	</body>
+</html>

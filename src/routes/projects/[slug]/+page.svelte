@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { showcases } from '$lib/scripts/showcases';
+	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
 	$: showcase = data.showcase;
@@ -15,12 +16,18 @@
 	<nav class="page-navigation" aria-label="Project navigation">
 		<a class="text-link" href="/#projects">← Back to portfolio</a>
 		<a class="text-link" href="/projects">All projects</a>
+		<ThemeToggle />
 	</nav>
 	<header class="project-heading">
 		<p class="eyebrow">{showcase.category}</p>
 		<h1>{showcase.title}</h1>
 		<p class="subtitle">{showcase.subtitle}</p>
 		<p class="description">{showcase.description}</p>
+		{#if showcase.repository}
+			<a class="text-link" href={showcase.repository} target="_blank" rel="noopener noreferrer"
+				>View on GitHub <span aria-hidden="true">↗</span></a
+			>
+		{/if}
 	</header>
 	<figure class="hero">
 		<a
@@ -43,44 +50,44 @@
 		{/each}
 	</section>
 	{#if showcase.note}<p class="project-note">{showcase.note}</p>{/if}
-	<section class="project-gallery" aria-labelledby="gallery-heading">
-		<h2 id="gallery-heading">Project gallery</h2>
-		<div class="gallery-grid">
-			{#each showcase.gallery as item}
-				<figure class="gallery-item">
-					{#if item.src}
-						<a
-							class="gallery-frame"
-							href={item.src}
-							target="_blank"
-							rel="noopener noreferrer"
-							aria-label={`Open ${item.title} image`}
-							><img
-								src={item.src}
-								alt={item.alt ?? item.title}
-								width="800"
-								height="500"
-								loading="lazy"
-							/></a
-						>
-					{:else}
-						<div class="gallery-frame placeholder">
-							<svg viewBox="0 0 32 32" width="32" height="32" fill="none" aria-hidden="true">
-								<rect x="4.5" y="5.5" width="23" height="21" rx="3" />
-								<circle cx="12" cy="12" r="2.5" />
-								<path d="m5 23 7-7 5 5 4-4 6 6" />
-							</svg>
-							<span>Visualization coming soon</span>
-						</div>
-					{/if}
-					<figcaption>
-						<h3>{item.title}</h3>
-						<p>{item.caption}</p>
-					</figcaption>
-				</figure>
-			{/each}
-		</div>
-	</section>
+	{#if showcase.gallery.length}<section class="project-gallery" aria-labelledby="gallery-heading">
+			<h2 id="gallery-heading">Project gallery</h2>
+			<div class="gallery-grid">
+				{#each showcase.gallery as item}
+					<figure class="gallery-item">
+						{#if item.src}
+							<a
+								class="gallery-frame"
+								href={item.src}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={`Open ${item.title} image`}
+								><img
+									src={item.src}
+									alt={item.alt ?? item.title}
+									width="800"
+									height="500"
+									loading="lazy"
+								/></a
+							>
+						{:else}
+							<div class="gallery-frame placeholder">
+								<svg viewBox="0 0 32 32" width="32" height="32" fill="none" aria-hidden="true">
+									<rect x="4.5" y="5.5" width="23" height="21" rx="3" />
+									<circle cx="12" cy="12" r="2.5" />
+									<path d="m5 23 7-7 5 5 4-4 6 6" />
+								</svg>
+								<span>Visualization coming soon</span>
+							</div>
+						{/if}
+						<figcaption>
+							<h3>{item.title}</h3>
+							<p>{item.caption}</p>
+						</figcaption>
+					</figure>
+				{/each}
+			</div>
+		</section>{/if}
 	<nav class="more-projects" aria-label="Explore another project">
 		<p>More to explore</p>
 		{#each otherProjects as project}
@@ -103,9 +110,10 @@
 	}
 	.page-navigation {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
 		justify-content: space-between;
-		gap: 20px;
+		gap: 16px;
 		font-size: 0.8rem;
 	}
 	.project-heading {
@@ -146,7 +154,7 @@
 	.hero-frame,
 	.gallery-frame {
 		display: block;
-		background: #101824;
+		background: var(--media-color);
 		border: 1px solid var(--border-color);
 		border-radius: 8px;
 		overflow: hidden;
@@ -200,7 +208,7 @@
 		color: var(--section-detail-color);
 		font-size: 0.8rem;
 		line-height: 1.8;
-		background: #17233870;
+		background: var(--surface-color);
 		border: 1px solid var(--border-color);
 		border-radius: 6px;
 		padding: 18px 22px;
@@ -245,7 +253,7 @@
 		font-size: 0.73rem;
 		padding: 20px;
 		text-align: center;
-		background: #17233840;
+		background: var(--surface-color);
 	}
 	.placeholder svg {
 		stroke: currentColor;

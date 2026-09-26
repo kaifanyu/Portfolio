@@ -1,0 +1,118 @@
+.night-study .lab-mark {
+	font-size: 36px;
+	color: #adbdca;
+	line-height: 1;
+}
+.night-study .lab-wordmark small {
+	letter-spacing: 1.4px;
+}
+.night-study .lab-explore {
+	background: #c5d3de;
+	border-color: #c5d3de;
+	color: #202d38;
+}
+.night-study .lab-presets button[aria-pressed='true'] {
+	background: #37404a;
+}
+.night-study .lab-dialog {
+	background: #20262e;
+}
+.night-study .lab-dialog-intro {
+	color: #a7b4c0;
+}
+.night-study .lab-experiment p {
+	color: #a0aebb;
+}
+.night-study .lab-catalog-actions button:first-child {
+	background: #b2c6d7;
+	color: #202d38;
+}
+.night-study .lab-favorite[aria-pressed='true'] {
+	color: #d5c6aa;
+}
+.lab-contrast {
+	display: grid;
+	grid-template-columns: 1fr 140px 35px;
+	align-items: center;
+	gap: 15px;
+	padding: 16px 0 24px;
+	color: #c8d6e2;
+	font-size: 11px;
+}
+.lab-contrast small {
+	display: block;
+	color: #91a0b1;
+	font-size: 9px;
+	line-height: 1.7;
+	margin-top: 5px;
+}
+.lab-contrast input {
+	width: 100%;
+	min-width: 0;
+	accent-color: #a9c1d3;
+	cursor: pointer;
+}
+.lab-contrast output {
+	text-align: right;
+	color: #93aec3;
+	font:
+		10px ui-monospace,
+		monospace;
+}
+.lab-footnote {
+	border-top: 1px solid var(--lab-line);
+	padding-top: 22px;
+	margin: 16px 0 0;
+	color: #8c9ba9;
+	font-size: 10px;
+}
+@media (max-width: 720px) {
+	.night-study .lab-wordmark {
+		gap: 10px;
+	}
+	.night-study .lab-wordmark small {
+		font-size: 7px;
+		letter-spacing: 1px;
+	}
+	.night-study .lab-mark {
+		font-size: 28px;
+	}
+	.night-study .lab-presets button {
+		padding: 7px 8px;
+		font-size: 10px;
+	}
+	.night-study .lab-overline {
+		font-size: 7px;
+		letter-spacing: 1px;
+	}
+	.lab-contrast {
+		grid-template-columns: 1fr 110px 32px;
+		gap: 10px;
+	}
+	.lab-contrast small {
+		max-width: 140px;
+	}
+}
+@media (max-width: 380px) {
+	.night-study .lab-bar {
+		padding-inline: 14px;
+	}
+	.night-study .lab-wordmark small {
+		font-size: 6px;
+		letter-spacing: 0.8px;
+	}
+	.night-study .lab-presets {
+		margin-right: 88px;
+	}
+	.night-study .lab-presets button {
+		font-size: 9px;
+		padding-inline: 5px;
+	}
+	.night-study .lab-motion {
+		right: 14px;
+		font-size: 9px !important;
+	}
+	.lab-contrast {
+		grid-template-columns: 1fr 90px 30px;
+	}
+}

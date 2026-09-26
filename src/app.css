@@ -1,17 +1,48 @@
 ﻿:root {
 	color-scheme: dark;
-	--background-color: #172438;
-	--tab-color: #25374f;
-	--font-color: #edf2f8;
-	--date-color: #9aabc1;
-	--indicator-line-color: #edf2f8;
-	--section-title-color: #edf2f8;
-	--section-detail-color: #b5c3d5;
-	--section-skills-color: #91c8df;
-	--view-projects-color: #edf2f8;
-	--paw-color: white;
-	--section-skills-bubble-color: #91c8df0d;
-	--border-color: #a6bdd51c;
+	--background-color: #1c2026;
+	--tab-color: #232930;
+	--surface-color: #232930;
+	--media-color: #171b20;
+	--font-color: #ebeef2;
+	--date-color: #9aa5b3;
+	--indicator-line-color: #ebeef2;
+	--section-title-color: #ebeef2;
+	--section-detail-color: #bec7d1;
+	--section-skills-color: #9bc4ce;
+	--view-projects-color: #ebeef2;
+	--paw-color: #ebeef2;
+	--section-skills-bubble-color: #28343c;
+	--tag-border-color: #3a4b55;
+	--border-color: #363e48;
+	--hover-border-color: #607581;
+	--sky-color: #9bc4ce;
+	--construction-grid-color: #9bc4ce06;
+	--construction-mark-color: #9bc4ce45;
+	--selection-color: #435c69;
+}
+:root[data-theme='light'] {
+	color-scheme: light;
+	--background-color: #f4f3ef;
+	--tab-color: #e8edf0;
+	--surface-color: #f9faf8;
+	--media-color: #e5e9eb;
+	--font-color: #26323b;
+	--date-color: #627080;
+	--indicator-line-color: #26323b;
+	--section-title-color: #26323b;
+	--section-detail-color: #485563;
+	--section-skills-color: #326576;
+	--view-projects-color: #26323b;
+	--paw-color: #26323b;
+	--section-skills-bubble-color: #e5edef;
+	--tag-border-color: #c8d8dd;
+	--border-color: #d5dbdd;
+	--hover-border-color: #8b9ea5;
+	--sky-color: #4d7989;
+	--construction-grid-color: #32657609;
+	--construction-mark-color: #32657638;
+	--selection-color: #c3dce4;
 }
 html {
 	scroll-behavior: smooth;
@@ -19,11 +50,18 @@ html {
 .custom-body {
 	margin: 0;
 	min-height: 100vh;
-	background: linear-gradient(to right, #1c2c44, #111d2e 80%);
+	background: var(--background-color);
 	color: var(--font-color);
 	font-family: 'Work Sans', sans-serif;
 	font-optical-sizing: auto;
 	-webkit-font-smoothing: antialiased;
+}
+/* Paint grain behind the content, never over text, photographs, or cards. */
+.portfolio-surface {
+	min-height: 100vh;
+	background-image: url('/images/grain.svg');
+	background-repeat: repeat;
+	background-size: 160px 160px;
 }
 *,
 *::before,
@@ -35,8 +73,8 @@ input {
 	font: inherit;
 }
 ::selection {
-	background: #91c8df35;
-	color: #fff;
+	background: var(--selection-color);
+	color: var(--font-color);
 }
 a,
 button {
@@ -59,7 +97,7 @@ a:hover {
 	gap: 7px;
 }
 .technologies li {
-	border: 1px solid #91c8df13;
+	border: 1px solid var(--tag-border-color);
 	background: var(--section-skills-bubble-color);
 	padding: 4px 9px;
 	border-radius: 4px;
@@ -76,7 +114,7 @@ a:hover {
 	padding: 0;
 	text-decoration: none;
 	cursor: pointer;
-	color: #d3dfed;
+	color: var(--font-color);
 	font-size: 0.77rem;
 	line-height: 1.8;
 }
@@ -89,8 +127,8 @@ a:hover {
 	left: 12px;
 	opacity: 0;
 	pointer-events: none;
-	background: #e5edf8;
-	color: #122139;
+	background: var(--font-color);
+	color: var(--background-color);
 	padding: 12px 18px;
 	z-index: 10000;
 	border-radius: 4px;
@@ -98,7 +136,7 @@ a:hover {
 .skip-link:focus {
 	opacity: 1;
 	pointer-events: auto;
-	color: #122139;
+	color: var(--background-color);
 }
 @media (prefers-reduced-motion: reduce) {
 	html {

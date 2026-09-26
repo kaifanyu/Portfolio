@@ -4,8 +4,13 @@
 	import '../app.css';
 </script>
 
-<div class="app-container">
-	{#if $page.url.pathname !== '/' && !$page.url.pathname.startsWith('/projects')}
+<div
+	class="app-container"
+	class:portfolio-surface={$page.url.pathname === '/' ||
+		$page.url.pathname.startsWith('/projects') ||
+		$page.url.pathname === '/playground'}
+>
+	{#if $page.url.pathname !== '/' && !$page.url.pathname.startsWith('/projects') && $page.url.pathname !== '/playground'}
 		<BackgroundNoise />
 	{/if}
 	<slot />

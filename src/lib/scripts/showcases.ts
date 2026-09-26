@@ -10,9 +10,48 @@ export interface Showcase {
 	sections: { title: string; description: string }[];
 	gallery: { src?: string; alt?: string; title: string; caption: string }[];
 	note?: string;
+	repository?: string;
 }
 
 export const showcases: Showcase[] = [
+	{
+		slug: 'rl-vla',
+		title: 'RL-VLA',
+		subtitle: 'Residual reinforcement learning for vision-language-action policies',
+		category: 'Robot learning · Reinforcement learning',
+		description:
+			'A framework for learning action corrections around a frozen OpenPI policy. A compact PyTorch actor uses state and the proposed action chunk to refine the controller, with SAC and PPO sharing the same observations, action interface, and evaluation workflow.',
+		hero: '/images/projects/rl-vla/residual-policy.svg',
+		heroAlt:
+			'Architecture diagram: frozen OpenPI actions and learned residual corrections combine before reaching the task controller',
+		heroCaption:
+			'The base policy stays frozen while a residual actor learns bounded corrections to its actions.',
+		repository: 'https://github.com/kaifanyu/RL-VLA',
+		sections: [
+			{
+				title: 'Keep the base, learn the correction',
+				description:
+					'OpenPI proposes an action chunk from images, state, and language. A small actor conditions on state, optional frozen features, and the base action prefix, then adds bounded corrections before commands reach the task controller.'
+			},
+			{
+				title: 'Compare SAC and PPO',
+				description:
+					'Two residual learners use a common environment contract: SAC with replay and twin critics, and PPO with fresh rollouts and clipped updates. The training loop accounts for action chunks that end early and separates terminal states from time limits.'
+			},
+			{
+				title: 'Connect policy and simulator',
+				description:
+					'A websocket adapter connects to a separately hosted OpenPI policy. Docker environments package the learners and a headless LIBERO simulator, while checkpoints, run manifests, and per-episode evaluation make experiments inspectable.'
+			},
+			{
+				title: 'Validate the learning pipeline',
+				description:
+					'CPU toy runs exercise training, checkpoint reloads, and evaluation. A real LIBERO smoke check covers reset, RGB rendering, and a controller step. End-to-end learning with a real OpenPI checkpoint remains the next validation stage.'
+			}
+		],
+		gallery: [],
+		note: 'The current results validate the software pipeline; they do not establish improved robot performance.'
+	},
 	{
 		slug: 'hamr',
 		title: 'HAMR',

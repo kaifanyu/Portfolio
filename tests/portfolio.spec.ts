@@ -50,7 +50,12 @@ test('current research is visible and earlier research can be expanded and colla
 }) => {
 	await visit(page, '/');
 	const section = page.getByRole('region', { name: 'Research', exact: true });
-	await expect(section.getByText('Xlabs', { exact: true })).toBeVisible();
+	await expect(section.getByRole('heading', { level: 3 })).toHaveText([
+		'Generative World Models',
+		'Image Editing Policy Research',
+		/HAMR: Holonomic Mobile Robotics/
+	]);
+	await expect(section.getByText('xLAB', { exact: true })).toBeVisible();
 	await expect(
 		section.getByText('ModLab, University of Pennsylvania', { exact: true })
 	).toBeVisible();
@@ -158,6 +163,7 @@ test('the archive preserves every project and screenshot galleries support the k
 	const names = [
 		'HAMR',
 		'F1-3DGS',
+		'RL-VLA',
 		'RoboRocky',
 		'Deepfake Audio Classifier',
 		'UNet3+ Settlement Detection',
@@ -201,7 +207,13 @@ for (const viewport of viewports) {
 	test.describe(`${viewport.name} layout`, () => {
 		test.use({ viewport: { width: viewport.width, height: viewport.height } });
 
-		for (const route of ['/', '/projects', '/projects/hamr', '/projects/f1-3dgs']) {
+		for (const route of [
+			'/',
+			'/projects',
+			'/projects/hamr',
+			'/projects/f1-3dgs',
+			'/projects/rl-vla'
+		]) {
 			test(`${route} fits the viewport and loads its images`, async ({ page }, testInfo) => {
 				await visit(page, route);
 				await loadVisibleImages(page);
@@ -223,6 +235,11 @@ for (const viewport of viewports) {
 				);
 				await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
 				if (route === '/') {
+					const sky = await page.locator('.celestial-background').boundingBox();
+					const content = await page.locator('main').boundingBox();
+					expect(sky!.height, 'Stars should extend through the full page').toBeGreaterThanOrEqual(
+						content!.height - 1
+					);
 					await capture(page, testInfo, `home-top-${viewport.name}.png`);
 					await page.getByRole('region', { name: 'Selected projects', exact: true }).screenshot({
 						path: testInfo.outputPath(`home-projects-${viewport.name}.png`),

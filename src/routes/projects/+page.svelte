@@ -1,5 +1,6 @@
 <script lang="ts">
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
+	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 	import projects from '$lib/scripts/projects';
 </script>
 
@@ -15,6 +16,7 @@
 	<nav class="page-navigation" aria-label="Portfolio navigation">
 		<a class="name-link" href="/">Kai Yu</a>
 		<a class="text-link" href="/#projects">← Back to portfolio</a>
+		<ThemeToggle />
 	</nav>
 	<header>
 		<p class="eyebrow">Selected work</p>
@@ -36,9 +38,10 @@
 	}
 	.page-navigation {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
 		justify-content: space-between;
-		gap: 20px;
+		gap: 16px;
 		font-size: 0.8rem;
 	}
 	.name-link {
