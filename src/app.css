@@ -1,3 +1,114 @@
-html{
-    scroll-behavior: smooth;
+﻿:root {
+	color-scheme: dark;
+	--background-color: #172438;
+	--tab-color: #25374f;
+	--font-color: #edf2f8;
+	--date-color: #9aabc1;
+	--indicator-line-color: #edf2f8;
+	--section-title-color: #edf2f8;
+	--section-detail-color: #b5c3d5;
+	--section-skills-color: #91c8df;
+	--view-projects-color: #edf2f8;
+	--paw-color: white;
+	--section-skills-bubble-color: #91c8df0d;
+	--border-color: #a6bdd51c;
+}
+html {
+	scroll-behavior: smooth;
+}
+.custom-body {
+	margin: 0;
+	min-height: 100vh;
+	background: linear-gradient(to right, #1c2c44, #111d2e 80%);
+	color: var(--font-color);
+	font-family: 'Work Sans', sans-serif;
+	font-optical-sizing: auto;
+	-webkit-font-smoothing: antialiased;
+}
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+button,
+input {
+	font: inherit;
+}
+::selection {
+	background: #91c8df35;
+	color: #fff;
+}
+a,
+button {
+	-webkit-tap-highlight-color: transparent;
+}
+a:hover {
+	color: var(--section-skills-color);
+}
+:focus-visible {
+	outline: 2px solid var(--section-skills-color);
+	outline-offset: 5px;
+	border-radius: 2px;
+}
+.technologies {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	gap: 7px;
+}
+.technologies li {
+	border: 1px solid #91c8df13;
+	background: var(--section-skills-bubble-color);
+	padding: 4px 9px;
+	border-radius: 4px;
+	font-size: 0.63rem;
+	line-height: 1.5;
+	color: var(--section-skills-color);
+}
+.text-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 16px;
+	border: 0;
+	background: none;
+	padding: 0;
+	text-decoration: none;
+	cursor: pointer;
+	color: #d3dfed;
+	font-size: 0.77rem;
+	line-height: 1.8;
+}
+.text-link:hover {
+	color: var(--section-skills-color);
+}
+.skip-link {
+	position: fixed;
+	top: 12px;
+	left: 12px;
+	opacity: 0;
+	pointer-events: none;
+	background: #e5edf8;
+	color: #122139;
+	padding: 12px 18px;
+	z-index: 10000;
+	border-radius: 4px;
+}
+.skip-link:focus {
+	opacity: 1;
+	pointer-events: auto;
+	color: #122139;
+}
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
 }

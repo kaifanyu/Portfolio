@@ -1,27 +1,12 @@
-<script>
-	// Add any global JavaScript logic here if needed
+﻿<script>
+	import { page } from '$app/stores';
 	import BackgroundNoise from '$lib/components/BackgroundNoise.svelte';
-  	import '../app.css';
-  </script>
-  
-  <style>
-	/* Global styles that apply to the entire app */
-	/* body {
-	  margin: 0;
-	  font-family: 'Arial', sans-serif;
-	}
-  
-	.app-container {
-	  display: flex;
-	  min-height: 100vh;
-	  flex-direction: column;
-	} */
-  </style>
-  
-  <div class="app-container">
-	<!-- Slot for child pages -->
-	 <BackgroundNoise />
+	import '../app.css';
+</script>
+
+<div class="app-container">
+	{#if $page.url.pathname !== '/' && !$page.url.pathname.startsWith('/projects')}
+		<BackgroundNoise />
+	{/if}
 	<slot />
-  </div>
-  
-  
+</div>
