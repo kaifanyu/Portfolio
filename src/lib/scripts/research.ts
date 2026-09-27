@@ -2,6 +2,7 @@
 	date: string;
 	title: string;
 	company: string;
+	companyLink?: string;
 	description: string;
 	technologies: string[];
 	link?: string;
@@ -12,7 +13,8 @@ const research: Research[] = [
 	{
 		date: '2025 — Present',
 		title: 'Generative World Models',
-		company: 'Jiatao Gu Research Group, University of Pennsylvania',
+		company: 'GMLR Lab',
+		companyLink: 'https://jiataogu.me/team/',
 		description:
 			'Researching generative world models and conditional image generation, alongside in-context learning and on-policy distillation for robotic policies.',
 		technologies: ['Python', 'Diffusion Models', 'Generative AI']
@@ -21,6 +23,7 @@ const research: Research[] = [
 		date: 'Current',
 		title: 'Image Editing Policy Research',
 		company: 'xLAB',
+		companyLink: 'https://xlab.upenn.edu/',
 		description:
 			'Researching learning signals for image-editing policies through conditional generative modeling. Developing robot policies by minimizing differences between latent representations of current and goal images.',
 		technologies: ['PyTorch', 'Vision-Language Models', 'Generative AI', 'LoRA'],
@@ -29,7 +32,8 @@ const research: Research[] = [
 	{
 		date: '2025 — Present',
 		title: 'HAMR: Holonomic Mobile Robotics',
-		company: 'ModLab, University of Pennsylvania',
+		company: 'ModLab',
+		companyLink: 'https://www.modlabupenn.org/',
 		description:
 			'Developing HAMR perception and control tools, including vision-based motion estimation of a custom ball caster, visual SLAM, localization, sensor integration, and PID control. Developed a simulator and path-planning algorithms to study mobile robot behavior.',
 		technologies: ['Computer Vision', 'SLAM', 'ROS 2', 'PID Control'],

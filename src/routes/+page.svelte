@@ -235,7 +235,13 @@
 						{#each showAllResearch ? research : research.slice(0, 3) as entry}
 							<li class="research-entry">
 								<div class="entry-meta">
-									<span>{entry.company}</span>
+									{#if entry.companyLink}
+										<a href={entry.companyLink} target="_blank" rel="noopener noreferrer"
+											>{entry.company}</a
+										>
+									{:else}
+										<span>{entry.company}</span>
+									{/if}
 									<span class="date">{entry.date}</span>
 								</div>
 								<h3>
