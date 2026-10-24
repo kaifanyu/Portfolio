@@ -42,6 +42,19 @@ export interface Project {
 
 const projects: Project[] = [
 	{
+		slug: 'drone-racing',
+		title: 'Drone Racing',
+		category: 'Robot learning · Sim-to-real',
+		image: '/media/drone-racing/real-flight.jpg',
+		alt: 'A real Crazyflie drone flying through the indoor racing course',
+		description:
+			'Teaching a drone to race three laps with PPO. From shaping a power loop to letting the policy find a faster line, then preparing it for real flight with domain randomization.',
+		technologies: ['Isaac Lab', 'PPO', 'Reward Design', 'Sim-to-Real'],
+		link: '/projects/drone-racing',
+		featured: true,
+		showcase: true
+	},
+	{
 		slug: 'hamr',
 		title: 'HAMR',
 		category: 'ModLab · Mobile robotics',

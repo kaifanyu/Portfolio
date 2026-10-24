@@ -15,6 +15,20 @@ export interface Showcase {
 
 export const showcases: Showcase[] = [
 	{
+		slug: 'drone-racing',
+		title: 'Drone Racing',
+		subtitle: 'Learning a faster line, from simulation to real flight',
+		category: 'ESE 651 · University of Pennsylvania',
+		description:
+			'Three laps, one goal: finish faster. A drone-racing project in NVIDIA Isaac Lab, following PPO, reward design, power loops, and domain randomization from simulation to real flight.',
+		hero: '/media/drone-racing/version-2-alt.jpg',
+		heroAlt: 'The simulated Crazyflie gate course in NVIDIA Isaac Lab',
+		heroCaption: 'Learning to race in simulation before taking the policy into the real world.',
+		repository: 'https://github.com/kaifanyu/PPO-Drone-Racing',
+		sections: [],
+		gallery: []
+	},
+	{
 		slug: 'rl-vla',
 		title: 'RL-VLA',
 		subtitle: 'Residual reinforcement learning for vision-language-action policies',

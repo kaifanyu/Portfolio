@@ -56,9 +56,7 @@ test('current research is visible and earlier research can be expanded and colla
 		/HAMR: Holonomic Mobile Robotics/
 	]);
 	await expect(section.getByText('xLAB', { exact: true })).toBeVisible();
-	await expect(
-		section.getByText('ModLab, University of Pennsylvania', { exact: true })
-	).toBeVisible();
+	await expect(section.getByText('ModLab', { exact: true })).toBeVisible();
 	await expect(
 		section.getByRole('heading', { name: 'Image Editing Policy Research', exact: true })
 	).toBeVisible();
@@ -161,6 +159,7 @@ test('the archive preserves every project and screenshot galleries support the k
 }) => {
 	await visit(page, '/projects');
 	const names = [
+		'Drone Racing',
 		'HAMR',
 		'F1-3DGS',
 		'RL-VLA',
@@ -210,6 +209,7 @@ for (const viewport of viewports) {
 		for (const route of [
 			'/',
 			'/projects',
+			'/projects/drone-racing',
 			'/projects/hamr',
 			'/projects/f1-3dgs',
 			'/projects/rl-vla'

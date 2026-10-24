@@ -29,7 +29,8 @@ Descriptions and presets live in `src/lib/components/playground/celestialCatalog
 
 - `src/lib/scripts/research.ts`: research entries, ordered as they appear on the homepage.
 - `src/lib/scripts/projects.ts`: project cards; `featured: true` includes a project on the homepage. All entries appear at `/projects`.
-- `src/lib/scripts/showcases.ts`: HAMR, F1-3DGS, and RL-VLA detail pages, technical sections, and image captions.
+- `src/lib/scripts/showcases.ts`: showcase metadata and the HAMR, F1-3DGS, and RL-VLA technical sections and image captions.
+- `src/lib/components/drone/DroneRacingShowcase.svelte`: the dedicated Drone Racing story at `/projects/drone-racing`.
 - `src/lib/scripts/experiences.ts`: experience history.
 
 ### Add your profile picture
@@ -44,6 +45,10 @@ The photo sits beside your name. Until a path is set, or if the image cannot loa
 The homepage and project archive use two columns on wider screens and a single column on phones. The sidebar's **Blog & paper collection** link opens [Labbook](https://www.thejoyestboy.com/).
 
 ### Add project images
+
+**Drone Racing:** The homepage and archive card open a full project page covering Isaac Lab, PPO, reward design, two simulation iterations, domain randomization, and physical flight. Copy lives in `src/lib/components/drone/DroneRacingShowcase.svelte`; `FlightVideo.svelte` provides the camera-angle controls. All five clips and their JPEG posters are in `static/media/drone-racing/`. The real-flight MOV was converted to an SDR H264/AAC MP4 for browser playback; the simulation MP4s retain their original video streams. Videos load on demand and do not autoplay. Source recordings remain in `../6510/`.
+
+The objective is the fastest **three-lap** completion, as specified in the project handout. The approximately 21-second and 19-second times describe the supplied simulation versions, not video durations or measured real-flight times. Project explanations draw on `../6510/ese651_project`, its history, and the handout. Observation-noise support exists but is disabled in the saved configuration; the page describes active thrust, drag, and PID-gain randomization.
 
 **Homepage thumbnail carousels:** HAMR and RL-VLA each have three slides, shared with their cards on `/projects`. The first slide uses the existing cover; slides 2 and 3 show placeholders until you add images. Use the small arrows to cycle through them.
 
