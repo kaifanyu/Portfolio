@@ -35,9 +35,9 @@ const research: Research[] = [
 		company: 'ModLab',
 		companyLink: 'https://www.modlabupenn.org/',
 		description:
-			'Developing HAMR perception and control tools, including vision-based motion estimation of a custom ball caster, visual SLAM, localization, sensor integration, and PID control. Developed a simulator and path-planning algorithms to study mobile robot behavior.',
+			'Studying how ball and wheelchair casters affect mobile robot motion, from uneven ground and lateral disturbances to path tracking. Connecting caster measurements, visual localization, ROS 2 control, and Gazebo experiments on a shared platform.',
 		technologies: ['Computer Vision', 'SLAM', 'ROS 2', 'PID Control'],
-		link: '/projects/hamr',
+		link: 'https://kaifanyu.github.io/hamr-research/',
 		current: true
 	},
 	{

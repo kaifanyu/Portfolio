@@ -96,7 +96,11 @@
 		<nav class="more-projects" aria-label="Explore another project">
 			<p>More to explore</p>
 			{#each otherProjects as project}
-				<a href={`/projects/${project.slug}`}>
+				<a
+					href={project.link ?? `/projects/${project.slug}`}
+					target={project.link ? '_blank' : undefined}
+					rel={project.link ? 'noopener noreferrer' : undefined}
+				>
 					<span
 						><strong>{project.title}</strong><span class="next-subtitle">{project.subtitle}</span
 						></span

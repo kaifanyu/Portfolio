@@ -13,7 +13,7 @@
 			question: 'From observation to feedback',
 			path: 'Observe → estimate → control',
 			body: 'Camera observations reveal caster motion. State estimates connect those measurements with the robot’s mechanics, while feedback helps translate motion commands into wheel and turret control.',
-			href: '/projects/hamr'
+			href: 'https://kaifanyu.github.io/hamr-research/'
 		},
 		{
 			name: 'RL-VLA',
@@ -35,12 +35,12 @@
 	const sheets = [
 		{
 			name: 'HAMR',
-			caption: 'Dual-camera caster observations',
-			kind: 'Observation',
-			src: '/images/projects/hamr/caster-tracking.png',
-			alt: 'Feature tracks from cameras observing the motion of a spherical caster',
-			description: 'Visual measurements meet the mechanics of a spherical caster.',
-			href: '/projects/hamr'
+			caption: 'Caster mobility, beyond flat ground',
+			kind: 'Simulation',
+			src: '/images/projects/hamr/caster-mobility.jpg',
+			alt: 'HAMR simulation model with drive wheels and split ball casters',
+			description: 'One mobile platform for comparing ball and wheelchair caster support.',
+			href: 'https://kaifanyu.github.io/hamr-research/'
 		},
 		{
 			name: 'F1-3DGS',

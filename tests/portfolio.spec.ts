@@ -119,16 +119,16 @@ test('section links preserve hashes and identify the active section', async ({ p
 	}
 });
 
-test('visitors can navigate from HAMR through the project archive and back home', async ({
+test('visitors can navigate from RL-VLA through the project archive and back home', async ({
 	page
 }) => {
 	await visit(page, '/');
 	await page
 		.getByRole('region', { name: 'Selected projects', exact: true })
-		.getByRole('link', { name: 'HAMR', exact: true })
+		.getByRole('link', { name: 'RL-VLA', exact: true })
 		.click();
-	await expect(page).toHaveURL(/\/projects\/hamr\/?$/);
-	await expect(page.getByRole('heading', { level: 1, name: /HAMR/ })).toBeVisible();
+	await expect(page).toHaveURL(/\/projects\/rl-vla\/?$/);
+	await expect(page.getByRole('heading', { level: 1, name: /RL-VLA/ })).toBeVisible();
 
 	await page
 		.getByRole('navigation', { name: 'Project navigation', exact: true })
@@ -141,10 +141,10 @@ test('visitors can navigate from HAMR through the project archive and back home'
 
 	await page
 		.getByRole('navigation', { name: 'Explore another project', exact: true })
-		.getByRole('link', { name: /HAMR/ })
+		.getByRole('link', { name: /RL-VLA/ })
 		.click();
-	await expect(page).toHaveURL(/\/projects\/hamr\/?$/);
-	await expect(page.getByRole('heading', { level: 1, name: /HAMR/ })).toBeVisible();
+	await expect(page).toHaveURL(/\/projects\/rl-vla\/?$/);
+	await expect(page.getByRole('heading', { level: 1, name: /RL-VLA/ })).toBeVisible();
 
 	await page
 		.getByRole('navigation', { name: 'Project navigation', exact: true })
@@ -152,6 +152,45 @@ test('visitors can navigate from HAMR through the project archive and back home'
 		.click();
 	await expect(page).toHaveURL(/\/#projects$/);
 	await expect(page.getByRole('heading', { level: 1, name: 'Kai Yu', exact: true })).toBeVisible();
+});
+
+test('HAMR entry points open the research site and the old URL redirects', async ({ page }) => {
+	const destination = 'https://kaifanyu.github.io/hamr-research/';
+	for (const route of ['/', '/projects']) {
+		await visit(page, route);
+		const card = page.getByRole('article').filter({
+			has: page.getByRole('heading', { name: 'HAMR', exact: true })
+		});
+		for (const name of ['View HAMR', 'HAMR', 'Explore project']) {
+			const link = card.getByRole('link', { name, exact: true });
+			await expect(link).toHaveAttribute('href', destination);
+			await expect(link).toHaveAttribute('target', '_blank');
+		}
+		await expect(card.getByRole('img')).toHaveAttribute(
+			'src',
+			'/images/projects/hamr/caster-mobility.jpg'
+		);
+		await expect(card.getByRole('button')).toHaveCount(0);
+		if (route === '/') {
+			await expect(
+				page
+					.getByRole('region', { name: 'Research', exact: true })
+					.getByRole('link', { name: /HAMR:/ })
+			).toHaveAttribute('href', destination);
+		}
+	}
+	await visit(page, '/projects/f1-3dgs');
+	await expect(
+		page
+			.getByRole('navigation', { name: 'Explore another project' })
+			.getByRole('link', { name: /HAMR/ })
+	).toHaveAttribute('href', destination);
+	// Preview serves a prerendered HTML redirect; Cloudflare uses the generated 308 rule.
+	await page.route(destination, (route) =>
+		route.fulfill({ contentType: 'text/html', body: '<h1>HAMR research</h1>' })
+	);
+	await page.goto('/projects/hamr');
+	await expect(page).toHaveURL(destination);
 });
 
 test('the archive preserves every project and screenshot galleries support the keyboard', async ({
@@ -210,7 +249,6 @@ for (const viewport of viewports) {
 			'/',
 			'/projects',
 			'/projects/drone-racing',
-			'/projects/hamr',
 			'/projects/f1-3dgs',
 			'/projects/rl-vla'
 		]) {
@@ -245,8 +283,6 @@ for (const viewport of viewports) {
 						path: testInfo.outputPath(`home-projects-${viewport.name}.png`),
 						animations: 'disabled'
 					});
-				} else if (route === '/projects/hamr') {
-					await capture(page, testInfo, `hamr-detail-${viewport.name}.png`, true);
 				} else if (route === '/projects/f1-3dgs') {
 					await capture(page, testInfo, `f1-3dgs-detail-${viewport.name}.png`, true);
 				} else {

@@ -57,22 +57,13 @@ const projects: Project[] = [
 	{
 		slug: 'hamr',
 		title: 'HAMR',
-		category: 'ModLab · Mobile robotics',
-		image: '/images/projects/hamr/caster-tracking.png',
-		alt: 'Dual-camera caster tracking with geometry overlays, a 3D model, and rotation estimates',
-		// Add your images to static/images/projects/hamr/ and set the paths below.
-		thumbnails: [
-			{
-				src: '/images/projects/hamr/caster-tracking.png',
-				alt: 'Dual-camera caster tracking with geometry overlays and rotation estimates'
-			},
-			{ src: '', alt: 'HAMR image 2' },
-			{ src: '', alt: 'HAMR image 3' }
-		],
+		category: 'ModLab · Caster mobility research',
+		image: '/images/projects/hamr/caster-mobility.jpg',
+		alt: 'HAMR simulation model with a circular platform, two drive wheels, and split ball casters',
 		description:
-			'Connecting caster mechanics, visual sensing, and feedback control in a holonomic mobile robot. Work spans dual-camera caster tracking, depth-camera localization, and ROS 2 / embedded PID control.',
-		technologies: ['ROS 2', 'Computer Vision', 'SLAM', 'PID Control'],
-		link: '/projects/hamr',
+			'Studying how ball and wheelchair casters change a robot’s motion on uneven ground, after a push, and along a planned path. Connecting hardware, ROS 2, visual navigation, and feedback control.',
+		technologies: ['ROS 2', 'Gazebo', 'Visual SLAM', 'Control'],
+		link: 'https://kaifanyu.github.io/hamr-research/',
 		featured: true,
 		showcase: true
 	},

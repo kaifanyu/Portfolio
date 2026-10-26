@@ -11,6 +11,7 @@ export interface Showcase {
 	gallery: { src?: string; alt?: string; title: string; caption: string }[];
 	note?: string;
 	repository?: string;
+	link?: string;
 }
 
 export const showcases: Showcase[] = [
@@ -69,7 +70,8 @@ export const showcases: Showcase[] = [
 	{
 		slug: 'hamr',
 		title: 'HAMR',
-		subtitle: 'Holonomic mobile robotics',
+		subtitle: 'Caster mobility, beyond flat ground',
+		link: 'https://kaifanyu.github.io/hamr-research/',
 		category: 'ModLab · University of Pennsylvania',
 		description:
 			'Connecting caster design, visual perception, and feedback control for a holonomic mobile robot. The work spans camera-based caster motion estimation, RGB-D mapping and localization, and motor control.',

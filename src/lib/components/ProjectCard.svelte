@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { Project } from '$lib/scripts/projects';
 	export let project: Project;
-	$: href = project.showcase ? `/projects/${project.slug}` : project.link;
+	$: href = project.link;
+	$: external = /^https?:\/\//.test(href);
 	let activeIndex = 0;
 	let failedSrc: string | null = null;
 	$: slides = project.thumbnails?.length
@@ -20,8 +21,8 @@
 			id={`thumbnail-${project.slug}`}
 			class="project-cover"
 			{href}
-			target={project.showcase ? undefined : '_blank'}
-			rel={project.showcase ? undefined : 'noopener noreferrer'}
+			target={external ? '_blank' : undefined}
+			rel={external ? 'noopener noreferrer' : undefined}
 			aria-label={`View ${project.title}`}
 		>
 			{#if activeImage.src && failedSrc !== activeImage.src}
@@ -104,8 +105,8 @@
 		<h3>
 			<a
 				{href}
-				target={project.showcase ? undefined : '_blank'}
-				rel={project.showcase ? undefined : 'noopener noreferrer'}
+				target={external ? '_blank' : undefined}
+				rel={external ? 'noopener noreferrer' : undefined}
 				>{project.title}<span aria-hidden="true">↗</span></a
 			>
 		</h3>
@@ -114,7 +115,13 @@
 			{#each project.technologies as tech}<li>{tech}</li>{/each}
 		</ul>
 		{#if project.showcase}
-			<a class="project-action" {href}>Explore project <span aria-hidden="true">→</span></a>
+			<a
+				class="project-action"
+				{href}
+				target={external ? '_blank' : undefined}
+				rel={external ? 'noopener noreferrer' : undefined}
+				>Explore project <span aria-hidden="true">{external ? '↗' : '→'}</span></a
+			>
 		{:else}
 			<details class="project-gallery">
 				<summary>Screenshots <span aria-hidden="true">+</span></summary>

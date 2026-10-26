@@ -7,8 +7,8 @@
 			x: 22,
 			y: 17,
 			description:
-				'A robot needs a useful view of where it is. With HAMR, that means exploring visual localization alongside the mechanics of a spherical wheel.',
-			link: '/projects/hamr',
+				'A robot needs a useful view of where it is. With HAMR, that means connecting visual localization with measurements of caster motion.',
+			link: 'https://kaifanyu.github.io/hamr-research/',
 			linkLabel: 'Explore HAMR'
 		},
 		{
@@ -16,8 +16,8 @@
 			x: 78,
 			y: 23,
 			description:
-				'Turning a desired motion into physical movement. HAMR connects caster motion analysis with the behavior of an active spherical wheel.',
-			link: '/projects/hamr',
+				'Turning a desired motion into physical movement. HAMR connects wheel-speed and heading control with experiments on passive caster support.',
+			link: 'https://kaifanyu.github.io/hamr-research/',
 			linkLabel: 'Explore the mechanism'
 		},
 		{
@@ -44,7 +44,7 @@
 			y: 79,
 			description:
 				'Intelligence has a physical context. HAMR is a place to investigate how mechanism design, sensing, and motion influence one another.',
-			link: '/projects/hamr',
+			link: 'https://kaifanyu.github.io/hamr-research/',
 			linkLabel: 'Meet HAMR'
 		}
 	];
